@@ -147,11 +147,13 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\GitHub\Projet-B23\main.c" />
     <ClCompile Include="character.c" />
+    <ClCompile Include="gameManager.c" />
     <ClCompile Include="map.c" />
     <ClCompile Include="outilMath.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
+    <ClInclude Include="gameManager.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="outilMath.h" />
   </ItemGroup>
