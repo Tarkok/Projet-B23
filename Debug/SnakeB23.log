@@ -1,0 +1,2 @@
+﻿  main.c
+c:\users\théo lejeune\documents\github\projet-b23\main.c(1): fatal error C1083: Impossible d'ouvrir le fichier include : 'SDL2/SDL.h' : No such file or directory
