@@ -5,5 +5,6 @@ int main()
 {
     printf("Hello world!\n");
 	printf("testGit\n");
+	printf("test2\n");
     return 0;
 }
