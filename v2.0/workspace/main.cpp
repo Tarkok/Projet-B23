@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 int main ( int argc, char** argv )
 {
     // initialize SDL video
@@ -17,6 +18,7 @@ int main ( int argc, char** argv )
     // create a new window
     SDL_Surface* screen = SDL_SetVideoMode(640, 480, 16,
                                            SDL_HWSURFACE|SDL_DOUBLEBUF);
+    SDL_WM_SetCaption("Snake !", NULL);
     if ( !screen )
     {
         printf("Unable to set 640x480 video: %s\n", SDL_GetError());
@@ -24,7 +26,7 @@ int main ( int argc, char** argv )
     }
 
     // load an image
-    SDL_Surface* bmp = SDL_LoadBMP("cb.bmp");
+    SDL_Surface* bmp = SDL_LoadBMP("media/cb.bmp");
     if (!bmp)
     {
         printf("Unable to load bitmap: %s\n", SDL_GetError());
