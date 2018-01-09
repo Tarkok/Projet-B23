@@ -1,45 +1,87 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-//Declaration des constantes & variables
-const int WIDTH = 25;
-const HEIGHT = 15;
-enum typeCase {VIDE, MUR, PIEGE, FRUIT, SERPENT, TETE};
-
-
-struct Point2D{
-    int x;
-    int y;
-};
-typedef struct Point2D Point2D;
+#include "variable.h"
+#include "utility.h"
 
 struct Snake{
     Point2D posTete;
-    Point2D posQueue[];
+    int longeurQueue;
+    int canCrossWall;
+    int estVivant;
+
+    Point2D posQueue[WIDTH * HEIGHT];
 };
 typedef struct Snake Snake;
 
-
-void attendre(float temps)
+void mourrir(Snake snake)
 {
-    clock_t terminer=clock()+(temps*CLOCKS_PER_SEC); // On calcule le moment où l'attente devra s'arrêter
-
-    while(clock()<terminer);
+    snake.estVivant = 1;
+    system("cls");
+    printf("YOU LOSE\n SCORE : &d\n", snake.longeurQueue);
+    printf("PRESS M TO GO BACK TO THE MENU");
 }
 
-void colision(Snake snake, int carte[][HEIGHT])
+
+
+int collision(Snake snake, int carte[][HEIGHT])
 {
+    /*Collision */
+    if(carte[snake.posTete.x][snake.posTete.y] != ' ')
+    {
+        /*Collision avec un fruit = MANGE*/
+        if(carte[snake.posTete.x][snake.posTete.y] == 'f')
+        {
+            /**/
+            snake.longeurQueue++;
+            // snake.posQueue[longueurQueue] = ;
+        }
+        /*Collision Mortelle*/
+        else if((snake.canCrossWall == 0 && carte[snake.posTete.x][snake.posTete.y] == '#') || carte[snake.posTete.x][snake.posTete.y] == 'X')
+        {
+            mourrir(snake);
+        }
+        /*Collision Non Mortelle*/
+
+
+    }
+}
+
+void apparaitreObjet(int carte[][HEIGHT])
+{
+    Point2D positionAleat;
+
+    //Si le nombre de fruit est egal a 0
+    if(nbFruit == 0)
+    {
+        //On gerenere une position aleatoire
+        srand(time(NULL));
+        positionAleat.x = rand()%(WIDTH - 1)+1;
+        positionAleat.y = rand()%(HEIGHT -1)+1;
+
+        //On incremente le nombre de fruit
+        nbFruit++;
+
+        //On stocke la postion dans la carte
+        carte[positionAleat.x][positionAleat.y] = 'f';
+    }
 
 }
 
-void update(int carte[][HEIGHT])
+
+void update(Snake snake, int carte[][HEIGHT])
 {
     //Gerer l'appel des fonction a chaque frame
     //Verifie les events
+    apparaitreObjet();
     draw(*carte);
     attendre(0.25);
-    update(*carte); //recursivite
+
+    if(snake.estVivant == 0)
+    {
+        update(*carte); //recursivite si snake est en vie
+    }
+
 }
 
 void load(const char* nomFichier, int carte[][HEIGHT])
@@ -82,6 +124,14 @@ void draw(int carte[][HEIGHT])
 int main()
 {
     Snake snake;
+    snake.canCrossWall = 0;
+    snake.estVivant = 1;
+    snake.longeurQueue = 1;
+    snake.posTete.x = 3;
+    snake.posTete.y = 3;
+    /*snake.posQueue[0].x = 3;
+    snake.posQueue[0].y = 2;*/
+
     long int carte[WIDTH][HEIGHT];
     /** a)Deplacement manuel du snake*/
     load("level/level_1_1.txt", *carte);
