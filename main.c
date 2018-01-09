@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <conio.h>
 #include "variable.h"
 #include "utility.h"
 
@@ -10,11 +11,11 @@ struct Snake{
     int canCrossWall;
     int estVivant;
 
-    Point2D posQueue[WIDTH * HEIGHT];
+    Point2D posQueue[];
 };
 typedef struct Snake Snake;
 
-void mourrir(Snake snake)
+void mourir(Snake snake)
 {
     snake.estVivant = 1;
     system("cls");
@@ -39,7 +40,7 @@ int collision(Snake snake, int carte[][HEIGHT])
         /*Collision Mortelle*/
         else if((snake.canCrossWall == 0 && carte[snake.posTete.x][snake.posTete.y] == '#') || carte[snake.posTete.x][snake.posTete.y] == 'X')
         {
-            mourrir(snake);
+            mourir(snake);
         }
         /*Collision Non Mortelle*/
 
@@ -56,8 +57,8 @@ void apparaitreObjet(int carte[][HEIGHT])
     {
         //On gerenere une position aleatoire
         srand(time(NULL));
-        positionAleat.x = rand()%(WIDTH - 1)+1;
-        positionAleat.y = rand()%(HEIGHT -1)+1;
+        positionAleat.x = rand()%(WIDTH - 1);
+        positionAleat.y = rand()%(HEIGHT -1);
 
         //On incremente le nombre de fruit
         nbFruit++;
@@ -69,20 +70,7 @@ void apparaitreObjet(int carte[][HEIGHT])
 }
 
 
-void update(Snake snake, int carte[][HEIGHT])
-{
-    //Gerer l'appel des fonction a chaque frame
-    //Verifie les events
-    apparaitreObjet();
-    draw(*carte);
-    attendre(0.25);
 
-    if(snake.estVivant == 0)
-    {
-        update(*carte); //recursivite si snake est en vie
-    }
-
-}
 
 void load(const char* nomFichier, int carte[][HEIGHT])
 {
@@ -121,21 +109,81 @@ void draw(int carte[][HEIGHT])
 
 }
 
+void moveSnake(char toucheFrappe, Snake snake, int carte[][HEIGHT])
+{
+    //UP
+    if(toucheFrappe == 'z')
+    {
+        snake.posTete.y++;
+    }
+    //LEFT
+    else if(toucheFrappe == 'q')
+    {
+        snake.posTete.x--;
+    }
+    //DOWN
+    else if(toucheFrappe == 's')
+    {
+        snake.posTete.y--;
+    }
+    //RIGHT
+    else if(toucheFrappe == 'd')
+    {
+        snake.posTete.x++;
+    }
+
+    //Bouge la queue
+    snake.posQueue[0] = snake.posTete;
+    for(int i = 1; i < snake.longeurQueue; i++)
+    {
+        snake.posQueue[i] = snake.posQueue[i--];
+    }
+
+    //Stocke snake dans la carte pour draw
+    carte[snake.posTete.x][snake.posTete.y] = 'O';
+    for(int i = 1; i < snake.longeurQueue; i++)
+    {
+        carte[snake.posQueue[i].x][snake.posQueue[i].y] = 'o';
+    }
+
+}
+
+void update(Snake snake, int carte[][HEIGHT])
+{
+    //Gerer l'appel des fonction a chaque frame
+    //Verifie les events
+
+
+    apparaitreObjet(*carte);
+    draw(*carte);
+    attendre(0.25);
+
+    char lettreFrappe = getch();
+    moveSnake(lettreFrappe, snake, *carte);
+
+
+    if(snake.estVivant == 0)
+    {
+        update(snake, *carte); //recursivite si snake est en vie
+    }
+
+}
+
 int main()
 {
     Snake snake;
     snake.canCrossWall = 0;
-    snake.estVivant = 1;
+    snake.estVivant = 0;
     snake.longeurQueue = 1;
     snake.posTete.x = 3;
     snake.posTete.y = 3;
-    /*snake.posQueue[0].x = 3;
-    snake.posQueue[0].y = 2;*/
+    snake.posQueue[0].x = 3;
+    snake.posQueue[0].y = 2;
 
     long int carte[WIDTH][HEIGHT];
     /** a)Deplacement manuel du snake*/
     load("level/level_1_1.txt", *carte);
-    update(*carte);
+    update(snake, *carte);
 
 
 

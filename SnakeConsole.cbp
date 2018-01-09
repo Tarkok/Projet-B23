@@ -34,6 +34,11 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="utility.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="utility.h" />
+		<Unit filename="variable.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

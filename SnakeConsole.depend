@@ -4,14 +4,19 @@
 	<stdlib.h>
 	<time.h>
 
-1515498626 source:c:\users\théo lejeune\documents\github\projet-b23\main.c
+1515508019 source:c:\users\théo lejeune\documents\github\projet-b23\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
+	<conio.h>
+	"variable.h"
+	"utility.h"
 
 1515506652 source:c:\users\théo lejeune\documents\github\projet-b23\utility.c
 	"utility.h"
 
 1515506666 c:\users\théo lejeune\documents\github\projet-b23\utility.h
 	<time.h>
+
+1515505423 c:\users\théo lejeune\documents\github\projet-b23\variable.h
 
