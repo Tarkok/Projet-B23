@@ -5,6 +5,7 @@
 //Declaration des constantes & variables
 const int WIDTH = 25;
 const HEIGHT = 15;
+enum typeCase {VIDE, MUR, PIEGE, FRUIT, SERPENT, TETE};
 
 
 struct Point2D{
@@ -19,11 +20,17 @@ struct Snake{
 };
 typedef struct Snake Snake;
 
+
 void attendre(float temps)
 {
     clock_t terminer=clock()+(temps*CLOCKS_PER_SEC); // On calcule le moment où l'attente devra s'arrêter
 
     while(clock()<terminer);
+}
+
+void colision(Snake snake, int carte[][HEIGHT])
+{
+
 }
 
 void update(int carte[][HEIGHT])
@@ -35,7 +42,7 @@ void update(int carte[][HEIGHT])
     update(*carte); //recursivite
 }
 
-void load(const char* nomFichier, char carte[][HEIGHT])
+void load(const char* nomFichier, int carte[][HEIGHT])
 {
    FILE* fichier = fopen(nomFichier, "r");
 
@@ -45,8 +52,9 @@ void load(const char* nomFichier, char carte[][HEIGHT])
         {
             for(int j = 0; j < WIDTH; j++)
             {
-                carte[j][i] = getc(fichier);
+                carte[j][i] = getc(fichier);;
             }
+
         }
 
         fclose(fichier);
@@ -57,37 +65,28 @@ void load(const char* nomFichier, char carte[][HEIGHT])
    }
 }
 
-void draw(char carte[][HEIGHT])
+void draw(int carte[][HEIGHT])
 {
     system("cls");
       for(int i = 0; i < HEIGHT; i++)
         {
             for(int j = 0; j < WIDTH; j++)
             {
-                if(carte[j][i] == '1')
-                {
-                    printf("#");
-                }
-                if(carte[j][i] == ' ')
-                {
-                    printf(" ");
-                }
-                if(carte[j][i] == '2')
-                {
-                    printf("#");
-                }
+                printf("%c", carte[j][i]);
             }
-             printf("\n");
+            printf("\n");
         }
 
 }
 
 int main()
 {
-    char carte[WIDTH][HEIGHT];
+    Snake snake;
+    long int carte[WIDTH][HEIGHT];
     /** a)Deplacement manuel du snake*/
     load("level/level_1_1.txt", *carte);
     update(*carte);
+
 
 
 
