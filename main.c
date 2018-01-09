@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 //Declaration des constantes & variables
 const int WIDTH = 25;
@@ -17,6 +18,17 @@ struct Snake{
     Point2D posQueue[];
 };
 typedef struct Snake Snake;
+
+void attendre(float temps)
+{
+    clock_t arrivee=clock()+(temps*CLOCKS_PER_SEC); // On calcule le moment où l'attente devra s'arrêter
+
+    while(clock()<arrivee);
+}
+
+void update()
+{
+}
 
 void load(const char* nomFichier, int carte[][HEIGHT])
 {
@@ -51,7 +63,9 @@ void draw(int carte[][HEIGHT])
         }
         printf("\n");
 
-        draw(*carte);
+        attendre(0.250);
+        system("cls");
+        draw(*carte);//Reccursivité, on appelle la fonction pour la repeter
 }
 
 int main()
