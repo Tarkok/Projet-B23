@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1515484575 source:c:\b23\snake\snakeconsole\main.c
+	<stdio.h>
+	<stdlib.h>
+
