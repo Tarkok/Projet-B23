@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "character.h"
 
 int main ( int argc, char** argv )
 {
@@ -16,14 +17,17 @@ int main ( int argc, char** argv )
     atexit(SDL_Quit);
 
     // create a new window
-    SDL_Surface* screen = SDL_SetVideoMode(640, 480, 16,
-                                           SDL_HWSURFACE|SDL_DOUBLEBUF);
+    SDL_Surface* screen = SDL_SetVideoMode(1280, 640, 16,
+                                           SDL_HWSURFACE|SDL_DOUBLEBUF); //Pour tile 32 px 40 * 20
     SDL_WM_SetCaption("Snake !", NULL);
+
     if ( !screen )
     {
         printf("Unable to set 640x480 video: %s\n", SDL_GetError());
         return 1;
     }
+
+    SDL_WM_ToggleFullScreen(screen);
 
     // load an image
     SDL_Surface* bmp = SDL_LoadBMP("media/cb.bmp");

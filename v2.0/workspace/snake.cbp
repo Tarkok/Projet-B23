@@ -43,7 +43,13 @@
 			<Add directory="C:/Users/Théo Lejeune/Documents/GitHub/Projet-B23/v2.0/SDL/lib" />
 		</Linker>
 		<Unit filename="cb.bmp" />
+		<Unit filename="character.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="render.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="render.h" />
+		<Unit filename="utility.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

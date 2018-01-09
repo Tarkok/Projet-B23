@@ -194,10 +194,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1515513592 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\main.cpp
+1515530178 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\main.cpp
 	<SDL.h>
 	<stdlib.h>
 	<stdio.h>
+	"character.h"
 
 1515513161 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl.h
 	"SDL_main.h"
@@ -388,4 +389,7 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+
+1515529876 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\character.h
+	<SDL.h>
 
