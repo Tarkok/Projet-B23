@@ -21,16 +21,21 @@ typedef struct Snake Snake;
 
 void attendre(float temps)
 {
-    clock_t arrivee=clock()+(temps*CLOCKS_PER_SEC); // On calcule le moment où l'attente devra s'arrêter
+    clock_t terminer=clock()+(temps*CLOCKS_PER_SEC); // On calcule le moment où l'attente devra s'arrêter
 
-    while(clock()<arrivee);
+    while(clock()<terminer);
 }
 
-void update()
+void update(int carte[][HEIGHT])
 {
+    //Gerer l'appel des fonction a chaque frame
+    //Verifie les events
+    draw(*carte);
+    attendre(0.25);
+    update(*carte); //recursivite
 }
 
-void load(const char* nomFichier, int carte[][HEIGHT])
+void load(const char* nomFichier, char carte[][HEIGHT])
 {
    FILE* fichier = fopen(nomFichier, "r");
 
@@ -52,28 +57,37 @@ void load(const char* nomFichier, int carte[][HEIGHT])
    }
 }
 
-void draw(int carte[][HEIGHT])
+void draw(char carte[][HEIGHT])
 {
+    system("cls");
       for(int i = 0; i < HEIGHT; i++)
         {
             for(int j = 0; j < WIDTH; j++)
             {
-                printf("%c",carte[j][i]);
+                if(carte[j][i] == '1')
+                {
+                    printf("#");
+                }
+                if(carte[j][i] == ' ')
+                {
+                    printf(" ");
+                }
+                if(carte[j][i] == '2')
+                {
+                    printf("#");
+                }
             }
+             printf("\n");
         }
-        printf("\n");
 
-        attendre(0.250);
-        system("cls");
-        draw(*carte);//Reccursivité, on appelle la fonction pour la repeter
 }
 
 int main()
 {
-    int carte[WIDTH][HEIGHT];
+    char carte[WIDTH][HEIGHT];
     /** a)Deplacement manuel du snake*/
-    load("level/level_1_2.txt", *carte);
-    draw(*carte);
+    load("level/level_1_1.txt", *carte);
+    update(*carte);
 
 
 
