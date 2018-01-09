@@ -111,28 +111,28 @@ void draw(int carte[][HEIGHT])
 
 void moveSnake(char toucheFrappe, Snake snake, int carte[][HEIGHT])
 {
-    //UP
-    if(toucheFrappe == 'z')
+   switch(toucheFrappe)
     {
-        snake.posTete.y++;
-    }
-    //LEFT
-    else if(toucheFrappe == 'q')
-    {
-        snake.posTete.x--;
-    }
-    //DOWN
-    else if(toucheFrappe == 's')
-    {
+        //UP
+    case('z'):
         snake.posTete.y--;
-    }
-    //RIGHT
-    else if(toucheFrappe == 'd')
-    {
+        break;
+        //DOWN
+    case('s'):
+        snake.posTete.y++;
+        break;
+        //LEFT
+    case('q'):
+        snake.posTete.x--;
+        break;
+    case('d'):
         snake.posTete.x++;
+        break;
     }
 
-    //Bouge la queue
+    //carte[snake.posTete.x][snake.posTete.y] = 'O';
+    goto(snake.posTete.x,snake.posTete.y) = ''
+   /*//Bouge la queue
     snake.posQueue[0] = snake.posTete;
     for(int i = 1; i < snake.longeurQueue; i++)
     {
@@ -140,12 +140,12 @@ void moveSnake(char toucheFrappe, Snake snake, int carte[][HEIGHT])
     }
 
     //Stocke snake dans la carte pour draw
-    carte[snake.posTete.x][snake.posTete.y] = 'O';
+
     for(int i = 1; i < snake.longeurQueue; i++)
     {
         carte[snake.posQueue[i].x][snake.posQueue[i].y] = 'o';
     }
-
+*/
 }
 
 void update(Snake snake, int carte[][HEIGHT])
