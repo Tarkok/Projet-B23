@@ -4,6 +4,7 @@
 #include <SDL.h>
 
 #include "structures.h"
+#include "utility.h"
 
 
 Snake* loadSnake();

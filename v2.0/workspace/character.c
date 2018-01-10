@@ -50,13 +50,17 @@ Snake* loadSnake()
 
 void checkTile(Snake* s, Map* m, SDL_Surface* screen)
 {
-    if(m->props[m->schema[s->positionX][s->positionY]].type == 1)
+    //Si snake cogne un mur
+    if(m->props[m->schema[s->positionX][s->positionY]].type == PIEGE || m->props[m->schema[s->positionX][s->positionY]].type == MUR)
     {
         //mourir(s, screen);
         s->positionTete.x = 64;
         s->positionTete.y = 64;
     }
-    if(m->props[m->schema[s->positionX][s->positionY]].type == 2)
+
+    //Si snake cogne un fruit
+    if(m->props[m->schema[s->positionX][s->positionY]].type == POMME || m->props[m->schema[s->positionX][s->positionY]].type == POMME_BONUS ||
+       m->props[m->schema[s->positionX][s->positionY]].type == POMME_GOLDEN ||m->props[m->schema[s->positionX][s->positionY]].type == POMME_MALUS)
     {
         eatFruit(s, m);
     }
@@ -66,6 +70,6 @@ void eatFruit(Snake* snake, Map* m)
 {
     snake->lengthQueue++;
     m->nbFruit--;
-    m->schema[snake->positionX][snake->positionY] = 4;
+    m->schema[snake->positionX][snake->positionY] = VIDE;
     randomFruit(m);
 }
