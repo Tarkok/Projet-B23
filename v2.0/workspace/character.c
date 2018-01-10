@@ -41,7 +41,7 @@ Snake* loadSnake()
 
     s->lengthQueue = 0;
 
-    s->imgTete = LoadImage32("media/head.bmp");
+    s->imgTete = LoadImage32("media/assets/h1.bmp");
 
 
     return s;
