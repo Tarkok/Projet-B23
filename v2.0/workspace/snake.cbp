@@ -43,7 +43,11 @@
 			<Add directory="C:/Users/maxim/Documents/GitHub/Projet-B23/v2.0/SDL/lib" />
 		</Linker>
 		<Unit filename="cb.bmp" />
-		<Unit filename="main.cpp" />
+		<Unit filename="main.c" />
+		<Unit filename="mouv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mouv.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
