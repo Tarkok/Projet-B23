@@ -17,6 +17,7 @@ typedef struct{
     SDL_Surface* tileset;//Pointeur vers le tileset
     Tile* tiles; //Tableau contenant chaque type de tile
     unsigned char** plan; //Matrice pour contenir le plan du niveau
+    int nbTilesWidthWorld, nbTilesHeightWorld; //taille du plan
 } Map;
 
 typedef struct{

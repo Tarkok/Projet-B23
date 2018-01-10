@@ -3,6 +3,8 @@
 #include <stdio.h>
 
 #include "character.h"
+#include "utility".h
+#include "render.h"
 
 int main ( int argc, char** argv )
 {
@@ -23,24 +25,13 @@ int main ( int argc, char** argv )
 
     if ( !screen )
     {
-        printf("Unable to set 640x480 video: %s\n", SDL_GetError());
+        printf("Unable to set 1280x640 video: %s\n", SDL_GetError());
         return 1;
     }
 
-    SDL_WM_ToggleFullScreen(screen);
-
-    // load an image
-    SDL_Surface* bmp = SDL_LoadBMP("media/cb.bmp");
-    if (!bmp)
-    {
-        printf("Unable to load bitmap: %s\n", SDL_GetError());
-        return 1;
-    }
-
-    // centre the bitmap on screen
-    SDL_Rect dstrect;
-    dstrect.x = (screen->w - bmp->w) / 2;
-    dstrect.y = (screen->h - bmp->h) / 2;
+    //Create the map
+    Map m;
+    m -> loadMap("level/level_1_1");
 
     // program main loop
     bool done = false;
@@ -72,19 +63,27 @@ int main ( int argc, char** argv )
         // DRAWING STARTS HERE
 
         // clear screen
-        SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
+        //SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
 
-        // draw bitmap
-        SDL_BlitSurface(bmp, 0, screen, &dstrect);
+        if(drawMap(m, screen) != 0)
+        {
+            printf("Cannot load map\n");
+        }
+
 
         // DRAWING ENDS HERE
 
-        // finally, update the screen :)
+        // finally, update the screen
+
         SDL_Flip(screen);
+
     } // end main loop
 
-    // free loaded bitmap
-    SDL_FreeSurface(bmp);
+
+        if(clearMap(m) != 0)
+        {
+            printf("Cannot clear map\n");
+        }
 
     // all is well ;)
     printf("Exited cleanly\n");

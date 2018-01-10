@@ -13,9 +13,13 @@
 SDL_Surface* LoadImage(const char* filePath);
 //Stocke les different tile du tileSet dans le tableau de la carte
 void loadMapTileSet(FILE* filePath, Map* carte);
+//Gestion des erreurs
+void ErrorQuit(const char* error);
+
+void loadMap_level(FILE* filePath, Map* carte);
 
 /*Fonction de rendu de la carte*/
-Map* loadMap(const char* filePath);
+Map* loadMap(const char* level);
 int drawMap(Map* carte, SDL_Surface* screen);
 int clearMap(Map* carte);
 
