@@ -6,13 +6,15 @@
 #include "character.h"
 #include "render.h"
 #include "structures.h"
+#include "time.h"
 
 /**File storing all the variable, constant and math object needed*/
 int stop; // for the update function
 
+/*void randomFruit(Map* m)
+{
 
- void update(Snake* snake, SDL_Surface* screen);
-
+}*/
 
 
 #endif // UTILITY_H_INCLUDED
