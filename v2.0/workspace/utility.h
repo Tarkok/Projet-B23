@@ -11,10 +11,7 @@
 /**File storing all the variable, constant and math object needed*/
 int stop; // for the update function
 
-/*void randomFruit(Map* m)
-{
-
-}*/
+void randomFruit(Map* m);
 
 
 #endif // UTILITY_H_INCLUDED

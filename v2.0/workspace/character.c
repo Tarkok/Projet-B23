@@ -58,11 +58,14 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen)
     }
     if(m->props[m->schema[s->positionX][s->positionY]].type == 2)
     {
-        eatFruit(s);
+        eatFruit(s, m);
     }
 }
 
-void eatFruit(Snake* snake)
+void eatFruit(Snake* snake, Map* m)
 {
     snake->lengthQueue++;
+    m->nbFruit--;
+    m->schema[snake->positionX][snake->positionY] = 4;
+    randomFruit(m);
 }
