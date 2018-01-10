@@ -6,9 +6,9 @@ tile0: plein
 tile1: vide
 tile2: plein
 tile3: miam
-tile4: miam
-tile5: miam
-tile6: miam
+tile4: bonus
+tile5: malus
+tile6: super
 #level
 40 20
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
