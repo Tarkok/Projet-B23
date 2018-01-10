@@ -8,10 +8,19 @@ void randomFruit(Map* m)
         //On gerenere une position aleatoire
         srand(time(NULL));
         xAleat = rand()%(40 - 1);
-        yAleat = rand()%(20 -1);
+        yAleat = rand()%(20 - 1);
 
         //On incremente le nombre de fruit
-        m->nbFruit++;
 
-        m->schema[xAleat][yAleat] = 6;
+
+        //On positionne la pomme dans la map
+        /*if(m->schema[xAleat][yAleat] == VIDE){*/
+            m->schema[xAleat][yAleat] = POMME;
+                m->nbFruit++;
+       /* else
+        {
+            randomFruit(m);
+        }*/
+
+
 }
