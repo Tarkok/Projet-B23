@@ -128,3 +128,13 @@ int LibererMap(Map* m)
 	free(m);
 	return 0;
 }
+
+void AfficherSnake(Snake* snake, SDL_Surface* screen)
+{
+    SDL_Rect Rect_dest;
+    Rect_dest.x = 32; //tile de 32*32px
+    Rect_dest.y = 32;
+
+    SDL_BlitSurface(snake->imgTete,NULL ,screen, &snake->positionTete);
+
+}

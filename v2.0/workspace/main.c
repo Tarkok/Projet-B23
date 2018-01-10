@@ -5,6 +5,7 @@
 #include "character.h"
 #include "utility.h"
 #include "render.h"
+#include "structures.h"
 
 int main ( int argc, char** argv )
 {
@@ -23,9 +24,13 @@ int main ( int argc, char** argv )
     Map *m;
     m = ChargerMap("level_1_1.txt");
 
-    AfficherMap(m,screen);
-    SDL_Flip(screen);
+    //Create the snake
+    Snake* snake = loadSnake();
+
+
+
     // program main loop
+
     int done = 0;
     while (done != 1)
     {
@@ -47,14 +52,34 @@ int main ( int argc, char** argv )
                     // exit if ESCAPE is pressed
                     if (event.key.keysym.sym == SDLK_ESCAPE)
                         done = 1;
+                    if(event.key.keysym.sym == SDLK_s)
+                    {
+                        changeDirection(0, snake);
+                    }
                     if(event.key.keysym.sym == SDLK_q)
                     {
-                        //move(snake, direction);
+                        changeDirection(1, snake);
+                    }
+                    if(event.key.keysym.sym == SDLK_d)
+                    {
+                        changeDirection(2, snake);
+                    }
+                    if(event.key.keysym.sym == SDLK_z)
+                    {
+                        changeDirection(3, snake);
                     }
                     break;
                 }
             } // end switch
+
         } // end of message processing
+
+            AfficherSnake(snake, screen);
+            updatePosition(snake);
+
+            SDL_Flip(screen);
+            AfficherMap(m,screen);
+
 
     } // end main loop
 
