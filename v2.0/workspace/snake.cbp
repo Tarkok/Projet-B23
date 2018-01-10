@@ -44,7 +44,9 @@
 		</Linker>
 		<Unit filename="cb.bmp" />
 		<Unit filename="character.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="render.c">
 			<Option compilerVar="CC" />
 		</Unit>

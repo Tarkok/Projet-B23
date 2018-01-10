@@ -1,9 +1,9 @@
-/*#include <SDL.h>
+#include <SDL.h>
 #include <stdlib.h>
 #include <stdio.h>
 
 #include "character.h"
-#include "utility".h
+#include "utility.h"
 #include "render.h"
 
 int main ( int argc, char** argv )
@@ -14,28 +14,20 @@ int main ( int argc, char** argv )
         printf( "Unable to init SDL: %s\n", SDL_GetError() );
         return 1;
     }
-
-    // make sure SDL cleans up before exit
-    atexit(SDL_Quit);
-
     // create a new window
     SDL_Surface* screen = SDL_SetVideoMode(1280, 640, 16,
                                            SDL_HWSURFACE|SDL_DOUBLEBUF); //Pour tile 32 px 40 * 20
     SDL_WM_SetCaption("Snake !", NULL);
 
-    if ( !screen )
-    {
-        printf("Unable to set 1280x640 video: %s\n", SDL_GetError());
-        return 1;
-    }
-
     //Create the map
     Map *m;
-    m = loadMap("level/level_1_1");
+    m = ChargerMap("level_1_1.txt");
 
+    AfficherMap(m,screen);
+    SDL_Flip(screen);
     // program main loop
-    bool done = false;
-    while (!done)
+    int done = 0;
+    while (done != 1)
     {
         // message processing loop
         SDL_Event event;
@@ -46,7 +38,7 @@ int main ( int argc, char** argv )
             {
                 // exit if the window is closed
             case SDL_QUIT:
-                done = true;
+                done = 1;
                 break;
 
                 // check for keypresses
@@ -54,38 +46,22 @@ int main ( int argc, char** argv )
                 {
                     // exit if ESCAPE is pressed
                     if (event.key.keysym.sym == SDLK_ESCAPE)
-                        done = true;
+                        done = 1;
+                    if(event.key.keysym.sym == SDLK_q)
+                    {
+                        //move(snake, direction);
+                    }
                     break;
                 }
             } // end switch
         } // end of message processing
 
-        // DRAWING STARTS HERE
-
-        // clear screen
-        //SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
-
-        if(drawMap(m, screen) != 0)
-        {
-            printf("Cannot load map\n");
-        }
-
-
-        // DRAWING ENDS HERE
-
-        // finally, update the screen
-
-        SDL_Flip(screen);
-
     } // end main loop
 
-
-        if(clearMap(m) != 0)
-        {
-            printf("Cannot clear map\n");
-        }
+    LibererMap(m);
 
     // all is well ;)
+    SDL_Quit();
     printf("Exited cleanly\n");
     return 0;
-}*/
+}

@@ -194,11 +194,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1515572819 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\main.cpp
-	<SDL.h>
+1515575001 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\main.cpp
 	<stdlib.h>
 	<stdio.h>
 	"character.h"
+	"utility"
+	"render.h"
 
 1515513161 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl.h
 	"SDL_main.h"
@@ -393,14 +394,23 @@
 1515529876 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\character.h
 	<SDL.h>
 
-1515573016 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\render.c
+1515576787 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\render.c
+	<string.h>
 	"render.h"
 
-1515571797 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\render.h
+1515576787 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\render.h
 	<SDL.h>
 	<string.h>
 	"utility.h"
 	"character.h"
 
-1515571293 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\utility.h
+1515576831 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\utility.h
+
+1515578628 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\main.c
+	<SDL.h>
+	<stdlib.h>
+	<stdio.h>
+	"character.h"
+	"utility.h"
+	"render.h"
 

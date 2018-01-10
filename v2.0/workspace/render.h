@@ -7,22 +7,28 @@
 #include "utility.h"
 #include "character.h"
 
-/*Fonction de gestion des images*/
+typedef unsigned char tileindex;
 
-//Charge une image dans la ram puis dans une variable
-SDL_Surface* LoadImage(const char* filePath);
-//Stocke les different tile du tileSet dans le tableau de la carte
-void loadMapTileSet(FILE* filePath, Map* carte);
-//Gestion des erreurs
-void ErrorQuit(const char* error);
+typedef struct
+{
+	SDL_Rect R;
+	int plein;
 
-void loadMap_level(FILE* filePath, Map* carte);
+} TileProp;
 
-/*Fonction de rendu de la carte*/
-Map* loadMap(const char* level);
-int drawMap(Map* carte, SDL_Surface* screen);
-int clearMap(Map* carte);
+typedef struct
+{
+	int LARGEUR_TILE,HAUTEUR_TILE;
+	int nbtilesX,nbtilesY;
+	SDL_Surface* tileset;
+	TileProp* props;
+	tileindex** schema;
+	int nbtiles_largeur_monde,nbtiles_hauteur_monde;
+} Map;
 
-/*Fonction de rendu de character*/
+Map* ChargerMap(const char* fic);
+int AfficherMap(Map* m,SDL_Surface* screen);
+int LibererMap(Map* m);
+
 
 #endif // RENDER_H_INCLUDED
