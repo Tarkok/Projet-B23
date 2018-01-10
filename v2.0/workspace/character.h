@@ -18,6 +18,7 @@ void checkTile(Snake* snake, Map* m, SDL_Surface* screen);
 
 void libererSnake(Snake* snake);
 
+//Affiche le score, le stocke et retourne au menu
 void mourir();
 
 #endif // CHARACTER_H_INCLUDED
