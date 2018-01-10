@@ -11,7 +11,7 @@ Snake* loadSnake();
 
 void changeDirection(int orientation, Snake* snake);
 void updatePosition(Snake* snake);
-void eatFruit(Snake* snake);
+void eatFruit(Snake* snake, Map* m);
 
 void checkTile(Snake* snake, Map* m, SDL_Surface* screen);
 

@@ -74,6 +74,7 @@ int main ( int argc, char** argv )
 
         } // end of message processing
 
+
             AfficherMap(m,screen);
             AfficherSnake(snake, screen);
 
@@ -82,7 +83,9 @@ int main ( int argc, char** argv )
             checkTile(snake, m, screen);
 
             SDL_Flip(screen);
+
             SDL_Delay(250);
+
 
 
 
