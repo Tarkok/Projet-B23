@@ -56,7 +56,7 @@ int main ( int argc, char** argv )
                     {
                         changeDirection(0, snake);
                     }
-                    if(event.key.keysym.sym == SDLK_q)
+                    if(event.key.keysym.sym == SDLK_a)
                     {
                         changeDirection(1, snake);
                     }
@@ -64,7 +64,7 @@ int main ( int argc, char** argv )
                     {
                         changeDirection(2, snake);
                     }
-                    if(event.key.keysym.sym == SDLK_z)
+                    if(event.key.keysym.sym == SDLK_w)
                     {
                         changeDirection(3, snake);
                     }
@@ -74,11 +74,13 @@ int main ( int argc, char** argv )
 
         } // end of message processing
 
+            AfficherMap(m,screen);
             AfficherSnake(snake, screen);
             updatePosition(snake);
 
             SDL_Flip(screen);
-            AfficherMap(m,screen);
+            SDL_Delay(250);
+
 
 
     } // end main loop

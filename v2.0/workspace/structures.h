@@ -8,6 +8,8 @@ typedef struct {
     SDL_Rect positionTete;
     int orientation; // 0 = bas, 1 = gauche, 2 = droite, 3 = haut
     int lengthQueue;
+    unsigned int positionX;
+    unsigned int positionY;
     SDL_Surface* imgTete;
     SDL_Surface* imgCorps;
 
