@@ -1,14 +1,14 @@
 Tilemapping Version 1.0
 #tileset
-tileset.bmp
+media/tileset.bmp
 7 1
-tile0: safe
-tile1: safe
-tile2: safe
+tile0: vide
+tile1: vide
+tile2: vide
 tile3: plein
-tile4: safe
+tile4: vide
 tile5: plein
-tile6: safe
+tile6: miam
 #level
 40 20
 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3

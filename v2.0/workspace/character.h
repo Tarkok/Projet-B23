@@ -17,6 +17,6 @@ void checkTile(Snake* snake, Map* m, SDL_Surface* screen);
 
 void libererSnake(Snake* snake);
 
-void mourir(Snake* snake, SDL_Surface * screen);
+void mourir();
 
 #endif // CHARACTER_H_INCLUDED

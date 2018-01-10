@@ -40,9 +40,11 @@ void ChargerMap_tileset(FILE* F,Map* m)
 			m->props[numtile].R.x = i*m->LARGEUR_TILE;
 			m->props[numtile].R.y = j*m->HAUTEUR_TILE;
 			fscanf(F,"%s %s",buf,buf2);
-			m->props[numtile].plein = 0;
-			if (strcmp(buf2,"plein")==0)
-				m->props[numtile].plein = 1;
+			m->props[numtile].type = 0;
+			if (strcmp(buf2,"plein")== 0)
+				m->props[numtile].type = 1;
+            else if (strcmp(buf2,"miam")== 0)
+				m->props[numtile].type = 2;
 		}
 	}
 }

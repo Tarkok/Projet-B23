@@ -76,7 +76,10 @@ int main ( int argc, char** argv )
 
             AfficherMap(m,screen);
             AfficherSnake(snake, screen);
+
             updatePosition(snake);
+
+            checkTile(snake, m, screen);
 
             SDL_Flip(screen);
             SDL_Delay(250);

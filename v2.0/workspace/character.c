@@ -24,13 +24,9 @@ void updatePosition(Snake* snake)
     default:
         break;
     }
+    snake->positionX = snake->positionTete.x / 32;
+    snake->positionY = snake->positionTete.y / 32;
 }
-
-void eatFruit(Snake* snake)
-{
-    snake->lengthQueue++;
-}
-
 
 Snake* loadSnake()
 {
@@ -45,16 +41,28 @@ Snake* loadSnake()
 
     s->lengthQueue = 0;
 
-    s->imgTete = LoadImage32("head.bmp");
+    s->imgTete = LoadImage32("media/head.bmp");
 
 
     return s;
 }
 
+
 void checkTile(Snake* s, Map* m, SDL_Surface* screen)
 {
-    if(m->props[m->schema[s->positionX][s->positionY]].plein == 1)
+    if(m->props[m->schema[s->positionX][s->positionY]].type == 1)
     {
-        // mourir(s, screen);
+        //mourir(s, screen);
+        s->positionTete.x = 64;
+        s->positionTete.y = 64;
     }
+    if(m->props[m->schema[s->positionX][s->positionY]].type == 2)
+    {
+        eatFruit(s);
+    }
+}
+
+void eatFruit(Snake* snake)
+{
+    snake->lengthQueue++;
 }

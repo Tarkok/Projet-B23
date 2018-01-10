@@ -21,7 +21,7 @@ typedef unsigned char tileindex;
 typedef struct
 {
 	SDL_Rect R;
-	int plein;
+	int type; // 0 = vide, 1 = Mortelle, 2 bonus, 3 super bonus, 4 malus
 
 } TileProp;
 
@@ -33,6 +33,8 @@ typedef struct
 	TileProp* props;
 	tileindex** schema;
 	int nbtiles_largeur_monde,nbtiles_hauteur_monde;
+
+	int nbFruit;
 } Map;
 
 #endif // STRUCTURES_H_INCLUDED
