@@ -4,7 +4,7 @@ media/assets/assets.bmp // INDIQUER ICI L'EMPLACEMENT DES ASSETS
 7 1 250 0 // DANS L'ORDRE: 
 // longueur des assets ; hauteur des assets ; délai des actions (en ms) ; crosswall (0 ou 1)
 tile0: mur //type de la tile 0 (vide, mur, piege, miam)
-tile1: vide //type de la tile 1 (vide, mur, piege, miam)
+tile1: vide //type de la tile 1 (vide, mur, piege, miam, bonus, malus, super)
 ...
 #level
 40 20 // largeur et hauter de la map
