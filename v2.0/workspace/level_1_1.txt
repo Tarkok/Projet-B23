@@ -2,13 +2,13 @@ Tilemapping Version 1.0
 #tileset
 media/assets/assets.bmp
 7 1
-tile0: mur 0
-tile1: vide 0
-tile2: piege 10
-tile3: miam 60
-tile4: bonus 10
-tile5: malus 15
-tile6: super 5
+tile0: mur
+tile1: vide
+tile2: piege 
+tile3: miam
+tile4: bonus
+tile5: malus
+tile6: super
 #level
 40 20
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

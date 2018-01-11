@@ -14,19 +14,31 @@ void randomFruit(Map* m)
 
         int objetAleat;
         objetAleat = rand()%100;
-
-
-
-        //On positionne la pomme dans la map
-        /*if(m->schema[xAleat][yAleat] == VIDE){*/
-            m->schema[xAleat][yAleat] = POMME;
+        if(objetAleat >= 0 && objetAleat <= 70)
+        {
+                m->schema[xAleat][yAleat] = POMME;
                 m->nbFruit++;
-
-        /*
+        }
         else
         {
-            randomFruit(m);
-        }*/
+            if(objetAleat > 60 && objetAleat <= 85)
+            {
+                m->schema[xAleat][yAleat] = POMME_MALUS;
+                m->nbFruit++;
+            }
+            else if(objetAleat > 75 && objetAleat <= 95)
+            {
+                m->schema[xAleat][yAleat] = POMME_BONUS;
+                m->nbFruit++;
+            }
+            else if(objetAleat > 95 && objetAleat <= 100)
+            {
+                m->schema[xAleat][yAleat] = POMME_GOLDEN;
+                m->nbFruit++;
+            }
+
+        }
+
 
 
 }

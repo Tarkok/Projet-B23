@@ -1,11 +1,13 @@
 #include <SDL.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 #include "character.h"
 #include "utility.h"
 #include "render.h"
 #include "structures.h"
+
 
 int main ( int argc, char** argv )
 {
@@ -83,6 +85,8 @@ int main ( int argc, char** argv )
             checkTile(snake, m, screen);
 
             SDL_Flip(screen);
+
+            t2 = clock();
 
             SDL_Delay(50);
 
