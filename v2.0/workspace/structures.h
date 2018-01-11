@@ -27,7 +27,7 @@ typedef unsigned char tileindex;
 typedef struct
 {
 	SDL_Rect R;
-	int type; // 0 = vide, 1 = Mortelle, 2 bonus, 3 super bonus, 4 malus
+	int type; // 0 = vide, 1 = mort, 2 = bonus, 3 = super bonus, 4 = malus
 	int pourcentage;
 
 } TileProp;

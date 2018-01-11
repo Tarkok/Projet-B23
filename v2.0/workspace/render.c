@@ -10,7 +10,7 @@ SDL_Surface* LoadImage32(const char* fichier_image)
 	SDL_Surface* image_ram = SDL_LoadBMP(fichier_image);	// charge l'image dans image_ram en RAM
 	if (image_ram==NULL)
 	{
-		printf("Image %s introuvable !! \n",fichier_image);
+		printf("Image %s introuvable !\n",fichier_image);
 		SDL_Quit();
 		system("pause");
 		exit(-1);
@@ -94,7 +94,7 @@ Map* ChargerMap(const char* level)
 	char buf[CACHE_SIZE];
 	F = fopen(level,"r");
 	if (!F)
-		ErrorQuit("fichier level introuvale\n");
+		ErrorQuit("Fichier level introuvable\n");
 	fgets(buf,CACHE_SIZE,F);
 	if (strstr(buf,"Tilemapping Version 1.0")==NULL)
 		ErrorQuit("Mauvaise version du fichier level. Ce programme attend la version 1.0\n");
@@ -112,7 +112,7 @@ Map* ChargerMap(const char* level)
 	return m;
 }
 
-int AfficherMap(Map* m,SDL_Surface* screen)
+int AfficherMap(Map* m, SDL_Surface* screen)
 {
 	int i,j;
 	SDL_Rect Rect_dest;
@@ -142,15 +142,3 @@ int LibererMap(Map* m)
 	return 0;
 }
 
-void AfficherSnake(Snake* snake, SDL_Surface* screen)
-{
-    SDL_BlitSurface(snake->teteAff,NULL ,screen, &snake->positionTete);
-
-    int i;
-    for(i = 0; i < snake->lengthQueue; i++)
-    {
-        SDL_BlitSurface(snake->imgCorps, NULL, screen, &snake->positionCorps[i]);
-    }
-
-    SDL_BlitSurface(snake->queueAff, NULL, screen, &snake->positionCorps[snake->lengthQueue]);
-}

@@ -131,6 +131,19 @@ void eatFruit(Snake* snake, Map* m)
     randomFruit(m);
 }
 
+void AfficherSnake(Snake* snake, SDL_Surface* screen)
+{
+    SDL_BlitSurface(snake->teteAff,NULL ,screen, &snake->positionTete);
+
+    int i;
+    for(i = 0; i < snake->lengthQueue; i++)
+    {
+        SDL_BlitSurface(snake->imgCorps, NULL, screen, &snake->positionCorps[i]);
+    }
+
+    SDL_BlitSurface(snake->queueAff, NULL, screen, &snake->positionCorps[snake->lengthQueue]);
+}
+
 void libererSnake(Snake* snake)
 {
 
