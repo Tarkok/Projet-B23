@@ -41,10 +41,20 @@ void ChargerMap_tileset(FILE* F,Map* m)
 			m->props[numtile].R.y = j*m->HAUTEUR_TILE;
 			fscanf(F,"%s %s",buf,buf2);
 			m->props[numtile].type = 0;
-			if (strcmp(buf2,"plein")== 0)
-				m->props[numtile].type = 1;
+			if (strcmp(buf2,"mur")== 0)
+				m->props[numtile].type = MUR;
+            else if (strcmp(buf2,"vide")== 0)
+				m->props[numtile].type = VIDE;
+            else if (strcmp(buf2,"piege")== 0)
+				m->props[numtile].type = PIEGE;
             else if (strcmp(buf2,"miam")== 0)
-				m->props[numtile].type = 2;
+				m->props[numtile].type = POMME;
+            else if (strcmp(buf2,"bonus")== 0)
+				m->props[numtile].type = POMME_BONUS;
+            else if (strcmp(buf2,"malus")== 0)
+				m->props[numtile].type = POMME_MALUS;
+            else if (strcmp(buf2,"super")== 0)
+				m->props[numtile].type = POMME_GOLDEN;
 		}
 	}
 }
@@ -98,6 +108,7 @@ Map* ChargerMap(const char* level)
 			ChargerMap_level(F,m);
 	} while (strstr(buf,"#fin")==NULL);
 	fclose(F);
+
 	return m;
 }
 
@@ -133,5 +144,12 @@ int LibererMap(Map* m)
 
 void AfficherSnake(Snake* snake, SDL_Surface* screen)
 {
-    SDL_BlitSurface(snake->imgTete,NULL ,screen, &snake->positionTete);
+    SDL_BlitSurface(snake->teteAff,NULL ,screen, &snake->positionTete);
+
+    for(int i = 0; i < snake->lengthQueue; i++)
+    {
+        SDL_BlitSurface(snake->imgCorps, NULL, screen, &snake->positionCorps[i]);
+    }
+
+    SDL_BlitSurface(snake->queueAff, NULL, screen, &snake->positionCorps[snake->lengthQueue]);
 }

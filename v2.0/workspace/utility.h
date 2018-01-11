@@ -8,6 +8,7 @@
 #include "structures.h"
 #include "time.h"
 
+
 /**File storing all the variable, constant and math object needed*/
 enum TILE_NAME{MUR, VIDE, PIEGE, POMME, POMME_BONUS, POMME_MALUS , POMME_GOLDEN};
 

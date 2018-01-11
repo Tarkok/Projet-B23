@@ -1,11 +1,13 @@
 #include <SDL.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 #include "character.h"
 #include "utility.h"
 #include "render.h"
 #include "structures.h"
+
 
 int main ( int argc, char** argv )
 {
@@ -84,10 +86,7 @@ int main ( int argc, char** argv )
 
             SDL_Flip(screen);
 
-            SDL_Delay(250);
-
-
-
+            SDL_Delay(100);
 
     } // end main loop
 
