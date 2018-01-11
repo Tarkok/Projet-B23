@@ -85,14 +85,12 @@ Snake* loadSnake()
 }
 
 
-void checkTile(Snake* s, Map* m, SDL_Surface* screen)
+void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
 {
     //Si snake cogne un mur
     if(m->props[m->schema[s->positionX][s->positionY]].type == PIEGE || m->props[m->schema[s->positionX][s->positionY]].type == MUR )
     {
-        //mourir(s, screen);
-        s->positionTete.x = 64;
-        s->positionTete.y = 64;
+            //g->sceneEnCours
     }
 
     int i;
@@ -100,9 +98,7 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen)
     {
         if(s->positionTete.x == s->positionCorps[i].x && s->positionTete.y == s->positionCorps[i].y)
         {
-            //mourir(s, screen);
-            s->positionTete.x = 64;
-            s->positionTete.y = 64;
+            //g->sceneEnCours
         }
     }
     //Si snake cogne un fruit

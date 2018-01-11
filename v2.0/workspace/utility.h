@@ -13,12 +13,11 @@
 enum TILE_NAME{MUR, VIDE, PIEGE, POMME, POMME_BONUS, POMME_MALUS , POMME_GOLDEN};
 enum GAME_SCENE{MENU, IN_GAME, LEVEL_SELECTOR, REGLE, SCORE};
 
-void play(Map* m, Snake* snake, SDL_Surface* s);
+void play(Map* m, Snake* snake, SDL_Surface* s, Game* g);
 
 int stop; // for the update function
 
 void randomFruit(Map* m);
-void changerScene(Game* g, int Etat);
 
 
 

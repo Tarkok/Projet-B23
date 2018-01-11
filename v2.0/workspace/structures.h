@@ -62,7 +62,7 @@ typedef struct{
 
 typedef struct{
 
-    int etatJeu[5]; // Pile contenant l'etat du jeu, le jeu joue la scene en haut de la pile
+    int sceneEnCours;
 
 }Game;
 

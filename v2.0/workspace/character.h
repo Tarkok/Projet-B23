@@ -14,11 +14,11 @@ void changeDirection(int orientation, Snake* snake);
 void updatePosition(Snake* snake);
 void eatFruit(Snake* snake, Map* m);
 
-void checkTile(Snake* snake, Map* m, SDL_Surface* screen);
+void checkTile(Snake* snake, Map* m, SDL_Surface* screen, Game* g);
 
 void libererSnake(Snake* snake);
 
 //Affiche le score, le stocke et retourne au menu
-void mourir();
+void mourir(Game* g);
 
 #endif // CHARACTER_H_INCLUDED

@@ -31,10 +31,10 @@ int main ( int argc, char** argv )
 
     //Creer le jeu et les etats de jeu
     Game* jeu;
-    GameScene* menu;
-    //menu = ChargerGameScene();
-    jeu->etatJeu[0] = menu;
-    // program main loop
+
+    jeu->sceneEnCours = MENU;
+
+    // Game main loop
 
     int done = 0;
     while (done != 1)
@@ -75,16 +75,22 @@ int main ( int argc, char** argv )
                     }
                     if(event.key.keysym.sym == SDLK_SPACE)
                     {
-                        changerScene(jeu, IN_GAME);
+                        //changerScene(jeu, IN_GAME);
+                        jeu->sceneEnCours = IN_GAME;
+                    }
+                    if(event.key.keysym.sym == SDLK_e)
+                    {
+                        //changerScene(jeu, MENU);
+
                     }
                     break;
                 }
             } // end switch
 
         } // end of message processing
-        if(jeu->etatJeu[0] == IN_GAME)
+        if(jeu->sceneEnCours == IN_GAME)
         {
-            play(m,snake,screen);
+            play(m,snake,screen, jeu);
         }
 
 
