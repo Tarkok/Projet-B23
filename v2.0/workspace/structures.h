@@ -10,9 +10,15 @@ typedef struct {
     int lengthQueue;
     unsigned int positionX;
     unsigned int positionY;
+    int* orientationCorps;
+
     SDL_Surface** imgTete; //Tableau contenant les 4 images de la tete pour les rotations
+    SDL_Surface** imgQueue;
+
     SDL_Surface* teteAff;
     SDL_Surface* imgCorps;
+    SDL_Surface* queueAff;
+
 
     SDL_Rect positionCorps[];
 }Snake;

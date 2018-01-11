@@ -11,9 +11,6 @@
 
 /**File storing all the variable, constant and math object needed*/
 enum TILE_NAME{MUR, VIDE, PIEGE, POMME, POMME_BONUS, POMME_MALUS , POMME_GOLDEN};
-//Horloge pour difference de temps
-clock_t t1;
-clock_t t2;
 
 int stop; // for the update function
 

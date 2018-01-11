@@ -150,4 +150,6 @@ void AfficherSnake(Snake* snake, SDL_Surface* screen)
     {
         SDL_BlitSurface(snake->imgCorps, NULL, screen, &snake->positionCorps[i]);
     }
+
+    SDL_BlitSurface(snake->queueAff, NULL, screen, &snake->positionCorps[snake->lengthQueue]);
 }

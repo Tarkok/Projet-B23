@@ -396,7 +396,7 @@
 	"structures.h"
 	"utility.h"
 
-1515612209 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\render.c
+1515677883 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\render.c
 	<string.h>
 	"render.h"
 
@@ -406,14 +406,14 @@
 	"utility.h"
 	"structures.h"
 
-1515674809 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\utility.h
+1515676060 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\utility.h
 	<stdio.h>
 	"character.h"
 	"render.h"
 	"structures.h"
 	"time.h"
 
-1515674809 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\main.c
+1515678898 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\main.c
 	<SDL.h>
 	<stdlib.h>
 	<stdio.h>
@@ -423,13 +423,13 @@
 	"render.h"
 	"structures.h"
 
-1515614409 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\character.c
+1515678927 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\character.c
 	"character.h"
 
 1515675105 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\utility.c
 	"utility.h"
 
-1515672417 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\structures.h
+1515677883 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\structures.h
 	<SDL.h>
 
 1515600220 source:c:\users\maxim\documents\github\projet-b23\v2.0\workspace\character.c
