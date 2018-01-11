@@ -9,12 +9,10 @@
 #include "time.h"
 
 
-/**File storing all the variable, constant and math object needed*/
+/** Stock les variables et les constantes recquises
+simplifie les appels*/
 enum TILE_NAME{MUR, VIDE, PIEGE, POMME, POMME_BONUS, POMME_MALUS , POMME_GOLDEN};
 
-int stop; // for the update function
-
 void randomFruit(Map* m);
-
 
 #endif // UTILITY_H_INCLUDED

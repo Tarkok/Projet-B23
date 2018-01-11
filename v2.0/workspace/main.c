@@ -11,27 +11,25 @@
 
 int main ( int argc, char** argv )
 {
-    // initialize SDL video
+    // On init la video SDL
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
         printf( "Unable to init SDL: %s\n", SDL_GetError() );
         return 1;
     }
-    // create a new window
+    // Init une fenetre SDL
     SDL_Surface* screen = SDL_SetVideoMode(1280, 640, 16,
                                            SDL_HWSURFACE|SDL_DOUBLEBUF); //Pour tile 32 px 40 * 20
     SDL_WM_SetCaption("Snake !", NULL);
 
-    //Create the map
+    // Init la map
     Map *m;
     m = ChargerMap("level_1_1.txt");
 
-    //Create the snake
+    // Init le snake
     Snake* snake = loadSnake();
 
-
-
-    // program main loop
+    // Boucle principale
 
     int done = 0;
     while (done != 1)
@@ -78,6 +76,7 @@ int main ( int argc, char** argv )
 
 
             AfficherMap(m,screen);
+
             AfficherSnake(snake, screen);
 
             updatePosition(snake);

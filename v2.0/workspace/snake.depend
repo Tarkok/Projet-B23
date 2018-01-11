@@ -432,18 +432,18 @@
 1515681139 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\structures.h
 	<SDL.h>
 
-1515679516 source:c:\users\maxim\documents\github\projet-b23\v2.0\workspace\character.c
+1515682603 source:c:\users\maxim\documents\github\projet-b23\v2.0\workspace\character.c
 	"character.h"
 
-1515679270 c:\users\maxim\documents\github\projet-b23\v2.0\workspace\character.h
+1515682223 c:\users\maxim\documents\github\projet-b23\v2.0\workspace\character.h
 	<SDL.h>
 	"structures.h"
 	"utility.h"
 
-1515679270 c:\users\maxim\documents\github\projet-b23\v2.0\workspace\structures.h
+1515681790 c:\users\maxim\documents\github\projet-b23\v2.0\workspace\structures.h
 	<SDL.h>
 
-1515679482 source:c:\users\maxim\documents\github\projet-b23\v2.0\workspace\main.c
+1515681790 source:c:\users\maxim\documents\github\projet-b23\v2.0\workspace\main.c
 	<SDL.h>
 	<stdlib.h>
 	<stdio.h>
@@ -453,7 +453,7 @@
 	"render.h"
 	"structures.h"
 
-1515679270 c:\users\maxim\documents\github\projet-b23\v2.0\workspace\utility.h
+1515682825 c:\users\maxim\documents\github\projet-b23\v2.0\workspace\utility.h
 	<stdio.h>
 	"character.h"
 	"render.h"
@@ -466,7 +466,7 @@
 	"utility.h"
 	"structures.h"
 
-1515679526 source:c:\users\maxim\documents\github\projet-b23\v2.0\workspace\render.c
+1515681790 source:c:\users\maxim\documents\github\projet-b23\v2.0\workspace\render.c
 	<string.h>
 	"render.h"
 

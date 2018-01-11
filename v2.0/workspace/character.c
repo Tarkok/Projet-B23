@@ -12,7 +12,6 @@ void updatePosition(Snake* snake)
     for(i = snake->lengthQueue; i >= 1; i--)
     {
         snake->positionCorps[i] = snake->positionCorps[i-1];
-        //snake->orientationCorps[i] = snake->orientationCorps[i-1];
     }
     snake->positionCorps[0] = snake->positionTete;
 
@@ -52,45 +51,42 @@ void updatePosition(Snake* snake)
 Snake* loadSnake()
 {
     Snake* s;
-    s->positionTete.x = 64;
-    s->positionTete.y = 64;
+    s->positionTete.x = 64; // Postition x de départ
+    s->positionTete.y = 64; // Position y de départ
 
     s->positionX = s->positionTete.x / 32;
     s->positionY = s->positionTete.y / 32;
 
     s->orientation = 0;
-   // s->orientationCorps[0] = 0;
-    //s->orientationCorps[1] = 1;
-
     s->lengthQueue = 0;
-    //Creation dynamique du tableau pour les differentes tete
+
+    // Creation dynamique du tableau pour les differentes tete
     s->imgTete = (SDL_Surface**)malloc(sizeof(SDL_Surface**)*8);
     s->imgTete[0] = LoadImage32("media/assets/h1.bmp");
     s->imgTete[1] = LoadImage32("media/assets/h2.bmp");
     s->imgTete[2] = LoadImage32("media/assets/h3.bmp");
     s->imgTete[3] = LoadImage32("media/assets/h4.bmp");
 
-        //Creation dynamique du tableau pour les differentes queue
+    // Creation dynamique du tableau pour les differentes queue
     s->imgQueue = (SDL_Surface**)malloc(sizeof(SDL_Surface**)*8);
     s->imgQueue[0] = LoadImage32("media/assets/q1.bmp");
     s->imgQueue[1] = LoadImage32("media/assets/q2.bmp");
     s->imgQueue[2] = LoadImage32("media/assets/q3.bmp");
     s->imgQueue[3] = LoadImage32("media/assets/q4.bmp");
 
-
-    //chargement de l'image du corps
+    // Chargement de l'image du corps
     s->imgCorps = LoadImage32("media/assets/b1.bmp");
 
     return s;
 }
 
-
 void checkTile(Snake* s, Map* m, SDL_Surface* screen)
 {
-    //Si snake cogne un mur
-    if(m->props[m->schema[s->positionX][s->positionY]].type == PIEGE || m->props[m->schema[s->positionX][s->positionY]].type == MUR )
+    // Si snake cogne un mur
+    if(m->props[m->schema[s->positionX][s->positionY]].type == PIEGE ||
+       m->props[m->schema[s->positionX][s->positionY]].type == MUR )
     {
-        //mourir(s, screen);
+        // Mourir(s, screen);
         s->positionTete.x = 64;
         s->positionTete.y = 64;
     }
@@ -106,9 +102,11 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen)
         }
     }
 
-    //Si snake cogne un fruit
-    if(m->props[m->schema[s->positionX][s->positionY]].type == POMME || m->props[m->schema[s->positionX][s->positionY]].type == POMME_BONUS ||
-       m->props[m->schema[s->positionX][s->positionY]].type == POMME_GOLDEN ||m->props[m->schema[s->positionX][s->positionY]].type == POMME_MALUS)
+    // Si snake cogne un fruit
+    if(m->props[m->schema[s->positionX][s->positionY]].type == POMME ||
+       m->props[m->schema[s->positionX][s->positionY]].type == POMME_BONUS ||
+       m->props[m->schema[s->positionX][s->positionY]].type == POMME_GOLDEN ||
+       m->props[m->schema[s->positionX][s->positionY]].type == POMME_MALUS)
     {
         eatFruit(s, m);
     }
@@ -127,7 +125,6 @@ void eatFruit(Snake* snake, Map* m)
         if(snake->lengthQueue > 0)
             snake->lengthQueue--;
     }
-
 
     m->nbFruit--;
     m->schema[snake->positionX][snake->positionY] = VIDE;
