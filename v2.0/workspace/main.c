@@ -29,8 +29,11 @@ int main ( int argc, char** argv )
     //Create the snake
     Snake* snake = loadSnake();
 
-
-
+    //Creer le jeu et les etats de jeu
+    Game* jeu;
+    GameScene* menu;
+    //menu = ChargerGameScene();
+    jeu->etatJeu[0] = menu;
     // program main loop
 
     int done = 0;
@@ -70,23 +73,20 @@ int main ( int argc, char** argv )
                     {
                         changeDirection(3, snake);
                     }
+                    if(event.key.keysym.sym == SDLK_SPACE)
+                    {
+                        changerScene(jeu, IN_GAME);
+                    }
                     break;
                 }
             } // end switch
 
         } // end of message processing
+        if(jeu->etatJeu[0] == IN_GAME)
+        {
+            play(m,snake,screen);
+        }
 
-
-            AfficherMap(m,screen);
-            AfficherSnake(snake, screen);
-
-            updatePosition(snake);
-
-            checkTile(snake, m, screen);
-
-            SDL_Flip(screen);
-
-            SDL_Delay(m->vitesse);
 
     } // end main loop
 

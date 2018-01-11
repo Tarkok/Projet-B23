@@ -38,7 +38,36 @@ void randomFruit(Map* m)
             }
 
         }
+}
 
+void changerScene(Game* g, int Etat)
+{
+    int indice;
+    //On cherche  notre Etat dans le tableau
+    for(int i = 0; i < 5; i++)
+    {
+        if(g->etatJeu[i] == Etat)
+        {
+            indice = i;
+        }
+    }
 
+    g->etatJeu[indice] = g->etatJeu[0];
+    g->etatJeu[0] = Etat;
 
+}
+
+void play(Map* m, Snake* snake, SDL_Surface* screen)
+{
+
+            AfficherMap(m,screen);
+            AfficherSnake(snake, screen);
+
+            updatePosition(snake);
+
+            checkTile(snake, m, screen);
+
+            SDL_Flip(screen);
+
+            SDL_Delay(m->vitesse);
 }

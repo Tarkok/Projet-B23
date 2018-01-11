@@ -155,7 +155,20 @@ void AfficherSnake(Snake* snake, SDL_Surface* screen)
     SDL_BlitSurface(snake->queueAff, NULL, screen, &snake->positionCorps[snake->lengthQueue]);
 }
 
-GameState* ChargerGameState()
+GameScene* ChargerGameScene()
 {
+    GameScene* gs;
+    gs->buttons[0].fichierImage = LoadImage32("media/assets/menu.bmp");
 
+    gs->buttons[0].RectPosition[0].x = 0;
+    //gs->buttons[0].RectPosition[0].y = 0;
+    //gs->buttons[0].RectPosition[0].h = 32;
+    //gs->buttons[0].RectPosition[0].w = 320;// Bouton 1
 }
+
+
+void afficherGameScene(GameScene* gs, SDL_Surface* screen)
+{
+    SDL_BlitSurface(gs->buttons[0].fichierImage, NULL, screen, &gs->buttons[0].RectPosition[0]);
+}
+

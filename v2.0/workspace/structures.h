@@ -48,12 +48,23 @@ typedef struct
 } Map;
 
 typedef struct{
+    SDL_Rect* RectPosition;
+    SDL_Surface* fichierImage;
+}Button;
+
+typedef struct{
 
     int stateType;
 
-    SDL_Surface** buttons;
+    Button buttons[4];
 
-}GameState;
+}GameScene;
+
+typedef struct{
+
+    int etatJeu[5]; // Pile contenant l'etat du jeu, le jeu joue la scene en haut de la pile
+
+}Game;
 
 
 #endif // STRUCTURES_H_INCLUDED
