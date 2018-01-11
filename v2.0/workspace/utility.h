@@ -11,6 +11,8 @@
 
 /**File storing all the variable, constant and math object needed*/
 enum TILE_NAME{MUR, VIDE, PIEGE, POMME, POMME_BONUS, POMME_MALUS , POMME_GOLDEN};
+enum GAME_STATE{MENU, IN_GAME, LEVEL_SELECTOR, REGLE, SCORE};
+
 
 int stop; // for the update function
 

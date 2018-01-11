@@ -47,4 +47,13 @@ typedef struct
 	int nbFruit;
 } Map;
 
+typedef struct{
+
+    int stateType;
+
+    SDL_Surface** buttons;
+
+}GameState;
+
+
 #endif // STRUCTURES_H_INCLUDED

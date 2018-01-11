@@ -17,5 +17,7 @@ int LibererMap(Map* m);
 
 void AfficherSnake(Snake* snake, SDL_Surface* screen);
 
+GameState* ChargerGameState();
+
 
 #endif // RENDER_H_INCLUDED

@@ -154,3 +154,8 @@ void AfficherSnake(Snake* snake, SDL_Surface* screen)
 
     SDL_BlitSurface(snake->queueAff, NULL, screen, &snake->positionCorps[snake->lengthQueue]);
 }
+
+GameState* ChargerGameState()
+{
+
+}
