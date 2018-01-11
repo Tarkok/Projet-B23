@@ -8,7 +8,6 @@
 #include "structures.h"
 
 
-
 SDL_Surface* LoadImage32(const char* fichier_image);
 
 Map* ChargerMap(const char* fic);
@@ -19,6 +18,9 @@ void AfficherSnake(Snake* snake, SDL_Surface* screen);
 
 GameScene* ChargerGameScene();
 void afficherGameScene(GameScene* gs, SDL_Surface* screen);
+
+void afficherMenu(SDL_Surface* screen);
+void afficherScore(Snake* s, SDL_Surface* screen);
 
 
 

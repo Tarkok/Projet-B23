@@ -158,17 +158,27 @@ void AfficherSnake(Snake* snake, SDL_Surface* screen)
 GameScene* ChargerGameScene()
 {
     GameScene* gs;
-    gs->buttons[0].fichierImage = LoadImage32("media/assets/menu.bmp");
-
-    gs->buttons[0].RectPosition[0].x = 0;
-    //gs->buttons[0].RectPosition[0].y = 0;
-    //gs->buttons[0].RectPosition[0].h = 32;
-    //gs->buttons[0].RectPosition[0].w = 320;// Bouton 1
+    gs->imgFond = LoadImage32("media/assets/menu.bmp");
+    gs->position.h=32;
+    gs->position.w=320;
+    gs->position.x=0;
+    gs->position.y=0;
 }
 
 
 void afficherGameScene(GameScene* gs, SDL_Surface* screen)
 {
-    SDL_BlitSurface(gs->buttons[0].fichierImage, NULL, screen, &gs->buttons[0].RectPosition[0]);
+    SDL_BlitSurface(gs->imgFond, NULL, screen, &gs->position);
 }
 
+void afficherScore(Snake* s, SDL_Surface* screen)
+{
+    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 17, 26, 112));
+    SDL_Flip(screen);
+}
+
+void afficherMenu(SDL_Surface* s)
+{
+    SDL_FillRect(s, NULL, SDL_MapRGB(s->format, 17, 206, 112));
+    SDL_Flip(s);
+}

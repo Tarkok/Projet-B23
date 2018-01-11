@@ -54,9 +54,8 @@ typedef struct{
 
 typedef struct{
 
-    int stateType;
-
-    Button buttons[4];
+    SDL_Surface* imgFond;
+    SDL_Rect position;
 
 }GameScene;
 

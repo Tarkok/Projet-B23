@@ -32,6 +32,8 @@ int main ( int argc, char** argv )
     //Creer le jeu et les etats de jeu
     Game* jeu;
 
+
+
     jeu->sceneEnCours = MENU;
 
     // Game main loop
@@ -75,12 +77,11 @@ int main ( int argc, char** argv )
                     }
                     if(event.key.keysym.sym == SDLK_SPACE)
                     {
-                        //changerScene(jeu, IN_GAME);
                         jeu->sceneEnCours = IN_GAME;
                     }
                     if(event.key.keysym.sym == SDLK_e)
                     {
-                        //changerScene(jeu, MENU);
+                        jeu->sceneEnCours = SCORE;
 
                     }
                     break;
@@ -88,9 +89,17 @@ int main ( int argc, char** argv )
             } // end switch
 
         } // end of message processing
+        if(jeu->sceneEnCours == MENU)
+        {
+            afficherMenu(screen);
+        }
         if(jeu->sceneEnCours == IN_GAME)
         {
             play(m,snake,screen, jeu);
+        }
+        if(jeu->sceneEnCours == SCORE)
+        {
+            afficherScore(snake, screen);
         }
 
 
