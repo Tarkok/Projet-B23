@@ -1,7 +1,7 @@
 Tilemapping Version 1.0
 #tileset
 media/assets/assets.bmp
-7 1 100 0
+7 1 10 0
 tile0: mur
 tile1: vide
 tile2: piege 
