@@ -15,7 +15,6 @@ void updatePosition(Snake* snake)
         //snake->orientationCorps[i] = snake->orientationCorps[i-1];
     }
     snake->positionCorps[0] = snake->positionTete;
-    //snake->orientationCorps[0] = snake->orientation;
 
 
     //Change position de la tete
@@ -124,7 +123,12 @@ void eatFruit(Snake* snake, Map* m)
     else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_GOLDEN)
         snake->lengthQueue = snake->lengthQueue + 3;
     else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_MALUS)
-        snake->lengthQueue--;
+    {
+        if(snake->lengthQueue > 0)
+            snake->lengthQueue--;
+    }
+
+
     m->nbFruit--;
     m->schema[snake->positionX][snake->positionY] = VIDE;
     randomFruit(m);

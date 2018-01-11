@@ -10,7 +10,6 @@ typedef struct {
     int lengthQueue;
     unsigned int positionX;
     unsigned int positionY;
-    int* orientationCorps;
 
     SDL_Surface** imgTete; //Tableau contenant les 4 images de la tete pour les rotations
     SDL_Surface** imgQueue;
@@ -41,6 +40,9 @@ typedef struct
 	TileProp* props;
 	tileindex** schema;
 	int nbtiles_largeur_monde,nbtiles_hauteur_monde;
+
+	int vitesse;
+	int crossWall;
 
 	int nbFruit;
 } Map;

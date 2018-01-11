@@ -27,7 +27,7 @@ void ChargerMap_tileset(FILE* F,Map* m)
 	char buf2[CACHE_SIZE];  // un buffer, petite mémoire cache
 	fscanf(F,"%s",buf); // nom du fichier
 	m->tileset = LoadImage32(buf);
-	fscanf(F,"%d %d",&m->nbtilesX,&m->nbtilesY);
+	fscanf(F,"%d %d %d %d",&m->nbtilesX,&m->nbtilesY, &m->vitesse, &m->crossWall);
 	m->LARGEUR_TILE = m->tileset->w/m->nbtilesX;
 	m->HAUTEUR_TILE = m->tileset->h/m->nbtilesY;
 	m->props = malloc(m->nbtilesX*m->nbtilesY*sizeof(TileProp));

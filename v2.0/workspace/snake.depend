@@ -201,7 +201,7 @@
 	"utility"
 	"render.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_audio.h"
@@ -220,14 +220,14 @@
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_main.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_stdinc.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -253,7 +253,7 @@
 	<stdlib.h>
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_config.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_config.h
 	"SDL_platform.h"
 	"SDL_config_dreamcast.h"
 	"SDL_config_macos.h"
@@ -263,16 +263,16 @@
 	"SDL_config_os2.h"
 	"SDL_config_minimal.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_platform.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_platform.h
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_config_win32.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_config_win32.h
 	"SDL_platform.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\begin_code.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\begin_code.h
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\close_code.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\close_code.h
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_audio.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -282,24 +282,24 @@
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_error.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_endian.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_endian.h
 	"SDL_stdinc.h"
 	<endian.h>
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_mutex.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_thread.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_mutex.h"
@@ -307,24 +307,24 @@
 	<process.h>
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_rwops.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_cdrom.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_cdrom.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_cpuinfo.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_events.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_active.h"
@@ -335,85 +335,85 @@
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_active.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_active.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_keyboard.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keysym.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_keysym.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_keysym.h
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_mouse.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_video.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_joystick.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_quit.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_loadso.h
-	"SDL_stdinc.h"
-	"SDL_error.h"
-	"begin_code.h"
-	"close_code.h"
-
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_timer.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515600807 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_version.h
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1515679773 c:\users\théo lejeune\documents\github\projet-b23\v2.0\sdl\include\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1515610532 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\character.h
+1515679774 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\character.h
 	<SDL.h>
 	"structures.h"
 	"utility.h"
 
-1515677883 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\render.c
+1515680929 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\render.c
 	<string.h>
 	"render.h"
 
-1515600808 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\render.h
+1515679774 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\render.h
 	<SDL.h>
 	<string.h>
 	"utility.h"
 	"structures.h"
 
-1515676060 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\utility.h
+1515679774 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\utility.h
 	<stdio.h>
 	"character.h"
 	"render.h"
 	"structures.h"
 	"time.h"
 
-1515678898 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\main.c
+1515680901 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\main.c
 	<SDL.h>
 	<stdlib.h>
 	<stdio.h>
@@ -423,13 +423,13 @@
 	"render.h"
 	"structures.h"
 
-1515678927 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\character.c
+1515680542 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\character.c
 	"character.h"
 
-1515675105 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\utility.c
+1515679774 source:c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\utility.c
 	"utility.h"
 
-1515677883 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\structures.h
+1515680901 c:\users\théo lejeune\documents\github\projet-b23\v2.0\workspace\structures.h
 	<SDL.h>
 
 1515679516 source:c:\users\maxim\documents\github\projet-b23\v2.0\workspace\character.c
