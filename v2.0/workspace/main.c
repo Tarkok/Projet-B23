@@ -27,7 +27,7 @@ int main ( int argc, char** argv )
 
     // Init la map
     Map *m;
-    m = ChargerMap("level_1_1.txt");
+    m = ChargerMap("txt/level_1_1.txt");
 
     // Init le snake
     Snake* snake = loadSnake();
