@@ -8,7 +8,8 @@ void changeDirection(int orientation, Snake* snake)
 void updatePosition(Snake* snake)
 {
     //Change position du corps
-    for(int i = snake->lengthQueue; i >= 1; i--)
+    int i;
+    for(i = snake->lengthQueue; i >= 1; i--)
     {
         snake->positionCorps[i] = snake->positionCorps[i-1];
         //snake->orientationCorps[i] = snake->orientationCorps[i-1];
@@ -95,7 +96,8 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen)
         s->positionTete.y = 64;
     }
 
-    for(int i = 0; i < s->lengthQueue; i++)
+    int i;
+    for(i = 0; i < s->lengthQueue; i++)
     {
         if(s->positionTete.x == s->positionCorps[i].x && s->positionTete.y == s->positionCorps[i].y)
         {

@@ -86,7 +86,7 @@ int main ( int argc, char** argv )
 
             SDL_Flip(screen);
 
-            SDL_Delay(100);
+            SDL_Delay(125);
 
     } // end main loop
 

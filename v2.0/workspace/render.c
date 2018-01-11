@@ -146,7 +146,8 @@ void AfficherSnake(Snake* snake, SDL_Surface* screen)
 {
     SDL_BlitSurface(snake->teteAff,NULL ,screen, &snake->positionTete);
 
-    for(int i = 0; i < snake->lengthQueue; i++)
+    int i;
+    for(i = 0; i < snake->lengthQueue; i++)
     {
         SDL_BlitSurface(snake->imgCorps, NULL, screen, &snake->positionCorps[i]);
     }
