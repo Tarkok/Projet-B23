@@ -11,7 +11,6 @@ void randomFruit(Map* m)
         yAleat = rand()%(20 - 2) + 1;
 
         //On incremente le nombre de fruit
-
         int objetAleat;
         objetAleat = rand()%100;
         if(objetAleat >= 0 && objetAleat <= 70)
@@ -36,9 +35,5 @@ void randomFruit(Map* m)
                 m->schema[xAleat][yAleat] = POMME_GOLDEN;
                 m->nbFruit++;
             }
-
         }
-
-
-
 }
