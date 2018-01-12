@@ -7,13 +7,11 @@
 SDL_Surface* LoadImage32(const char* fichier_image)
 {
 	SDL_Surface* image_result;
-	SDL_Surface* image_ram = SDL_LoadBMP(fichier_image);	// charge l'image dans image_ram en RAM
-	if (image_ram==NULL)
+	SDL_Surface* image_ram = SDL_LoadBMP(fichier_image);    // Charge l'image dans image_ram en RAM
+	if (image_ram == NULL)
 	{
-		printf("Image %s introuvable !\n",fichier_image);
 		SDL_Quit();
-		system("pause");
-		exit(-1);
+		exit(-1);  // En cas d'erreur
 	}
 	image_result = SDL_DisplayFormat(image_ram);
 	SDL_FreeSurface(image_ram);
@@ -23,9 +21,9 @@ SDL_Surface* LoadImage32(const char* fichier_image)
 void ChargerMap_tileset(FILE* F,Map* m)
 {
 	int numtile,i,j;
-	char buf[CACHE_SIZE];  // un buffer, petite mémoire cache
-	char buf2[CACHE_SIZE];  // un buffer, petite mémoire cache
-	fscanf(F,"%s",buf); // nom du fichier
+	char buf[CACHE_SIZE];   // Un buffer, petite mémoire cache
+	char buf2[CACHE_SIZE];  // Un buffer, petite mémoire cache
+	fscanf(F,"%s",buf);     // Nom du fichier
 	m->tileset = LoadImage32(buf);
 	fscanf(F,"%d %d %d %d",&m->nbtilesX,&m->nbtilesY, &m->vitesse, &m->crossWall);
 	m->LARGEUR_TILE = m->tileset->w/m->nbtilesX;
@@ -64,7 +62,7 @@ void ErrorQuit(const char* error)
 	puts(error);
 	SDL_Quit();
 	system("pause");
-	exit(-1);
+	exit(-1);       // Permet un debugging efficace
 }
 
 void ChargerMap_level(FILE* F,Map* m)
@@ -89,6 +87,7 @@ void ChargerMap_level(FILE* F,Map* m)
 
 Map* ChargerMap(const char* level)
 {
+    // Système de tilemapping
 	FILE* F;
 	Map* m;
 	char buf[CACHE_SIZE];
@@ -106,9 +105,8 @@ Map* ChargerMap(const char* level)
 			ChargerMap_tileset(F,m);
 		if (strstr(buf,"#level"))
 			ChargerMap_level(F,m);
-	} while (strstr(buf,"#fin")==NULL);
+	} while (strstr(buf,"#fin") == NULL);
 	fclose(F);
-
 	return m;
 }
 
@@ -123,8 +121,8 @@ int AfficherMap(Map* m, SDL_Surface* screen, Snake* s)
     position.x = 32;
     position.y = 5;
 
-    char affichage[80];
-    sprintf(affichage, "Score  : %d    ¥   Time : %d", s->lengthQueue, gameTime);
+    char affichage[152];
+    sprintf(affichage, "Score  : %d    ¥    Time : %d", s->lengthQueue, gameTime);
 
     police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
     texte = TTF_RenderText_Blended(police, affichage , couleurNoire);
@@ -171,40 +169,30 @@ void AfficherSnake(Snake* snake, SDL_Surface* screen)
     SDL_BlitSurface(snake->queueAff, NULL, screen, &snake->positionCorps[snake->lengthQueue]);
 }
 
-GameScene* ChargerGameScene()
-{
-    GameScene* gs;
-    gs->imgFond = LoadImage32("media/assets/menu.bmp");
-    gs->position.h=32;
-    gs->position.w=320;
-    gs->position.x=0;
-    gs->position.y=0;
-}
-
-
-void afficherGameScene(GameScene* gs, SDL_Surface* screen)
-{
-    SDL_BlitSurface(gs->imgFond, NULL, screen, &gs->position);
-}
 
 void afficherScore(Snake* s, SDL_Surface* screen)
 {
+    // Affichage du fond
+    SDL_Surface* Fond = NULL;
+    Fond = LoadImage32("media/assets/background.bmp");
+    SDL_Rect xy;
+    xy.x = 0;
+    xy.y = 0;
+    SDL_BlitSurface(Fond, NULL, screen, &xy);
+
+    // Affichage du score avec SDL TTF
     TTF_Init();
     TTF_Font* police = NULL;
     SDL_Surface* texte = NULL;
     SDL_Rect position;
-    SDL_Color couleurNoire = {0, 0, 0};
+    SDL_Color couleurNoire = {255, 255, 255};
     position.x = 1280/2;
     position.y = 640/2;
 
     char score[50];
-    sprintf(score, "Score : %d Time : %d", s->lengthQueue, gameTime);
-
+    sprintf(score, "GAME OVER        Score : %d   Time : %d", s->lengthQueue, gameTime);
     police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
     texte = TTF_RenderText_Blended(police, score , couleurNoire);
-
-
-    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 17, 26, 112));
     SDL_BlitSurface(texte, NULL, screen, &position);
     SDL_Flip(screen);
 }
@@ -222,7 +210,7 @@ void afficherMenu(SDL_Surface* screen)
 
 }
 
-afficherLevelSelector(SDL_Surface* screen)
+void afficherLevelSelector(SDL_Surface* screen)
 {
     SDL_Surface* Fond;
     Fond = LoadImage32("media/assets/menulevel.bmp");
@@ -234,14 +222,26 @@ afficherLevelSelector(SDL_Surface* screen)
     SDL_Flip(screen);
 }
 
-afficherRegle(SDL_Surface* screen)
+void afficherRegle(SDL_Surface* screen)
 {
     SDL_Surface* Fond;
-    Fond = LoadImage32("media/assets/menulevel.bmp");
+    Fond = LoadImage32("media/assets/rules.bmp");
     SDL_Rect position;
     position.x = 0;
     position.y = 0;
 
     SDL_BlitSurface(Fond, NULL, screen, &position);
+    SDL_Flip(screen);
+}
+
+void afficherBestScore(SDL_Surface* screen)
+{
+    SDL_Surface* Fond;
+    Fond = LoadImage32("media/assets/background.bmp");
+    SDL_Rect positionF;
+    positionF.x = 0;
+    positionF.y = 0;
+
+    SDL_BlitSurface(Fond, NULL, screen, &positionF);
     SDL_Flip(screen);
 }

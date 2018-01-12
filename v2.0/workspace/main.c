@@ -11,9 +11,8 @@
 #include "structures.h"
 
 
-int main ( int argc, char** argv )
+int main ( int argc, char** argv ) // Main surchargé pour SDL
 {
-
     // On init la video SDL
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
@@ -22,49 +21,29 @@ int main ( int argc, char** argv )
     }
     // Icone du programme
     SDL_WM_SetIcon(SDL_LoadBMP("media/assets/ico.bmp"), NULL);
-    TTF_Init();
-
     // Init une fenetre SDL
     SDL_Surface* screen = SDL_SetVideoMode(1280, 640, 16, SDL_HWSURFACE|SDL_DOUBLEBUF); //Pour tile 32 px 40 * 20
     SDL_WM_SetCaption("Snake v2.0", NULL);
 
     // Init la map
     Map *m;
-
     // Init le snake
-    Snake* snake = loadSnake();
+    Snake* snake ;
+
+    snake = loadSnake();
 
     // Boucle principale
     //Creer le jeu et les etats de jeu
     Game* jeu;
 
-    jeu->sceneEnCours = MENU;
+    jeu->sceneEnCours = NULL;
 
     // Game main loop
 
     int done = 0;
     while (done != 1)
     {
-        if(jeu->sceneEnCours == MENU)
-        {
-            afficherMenu(screen);
-        }
-        if(jeu->sceneEnCours == IN_GAME)
-        {
-            play(m,snake,screen, jeu);
-        }
-        if(jeu->sceneEnCours == SCORE)
-        {
-            afficherScore(snake, screen);
-        }
-        if(jeu->sceneEnCours == LEVEL_SELECTOR)
-        {
-            afficherLevelSelector(screen);
-        }
-        if(jeu->sceneEnCours == REGLE)
-        {
-            afficherRegle(screen);
-        }
+
 
         // message processing loop
         SDL_Event event;
@@ -81,7 +60,7 @@ int main ( int argc, char** argv )
                 // check for keypresses
             case SDL_KEYDOWN:
                 {
-                    // exit if ESCAPE is pressed
+                    // CONTROLES EN JEU
                     if (event.key.keysym.sym == SDLK_ESCAPE)
                     {
                         jeu->sceneEnCours = MENU;
@@ -113,7 +92,8 @@ int main ( int argc, char** argv )
                             jeu->sceneEnCours = LEVEL_SELECTOR;
                         }
                     }
-                    /** NAVIGATION DANS LES MENUS */
+
+                    /** NAVIGATION DANS LES MENUS : CHOIX DU LEVEL */
                     if(event.key.keysym.sym == SDLK_1)
                     {
                         if(jeu->sceneEnCours == MENU)
@@ -122,9 +102,11 @@ int main ( int argc, char** argv )
                         }
                         else if(jeu->sceneEnCours == LEVEL_SELECTOR)
                         {
-                            beginTime = clock();
+                            snake->orientation = 0;
+                            snake->lengthQueue = 0;
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
+                            beginTime = clock();
                             m = ChargerMap("txt/level_1_1.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
@@ -140,6 +122,9 @@ int main ( int argc, char** argv )
                         {
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
+                            snake->orientation = 0;
+                            snake->lengthQueue = 0;
+                            beginTime = clock();
                             m = ChargerMap("txt/level_2_1.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
@@ -148,13 +133,15 @@ int main ( int argc, char** argv )
                     {
                         if(jeu->sceneEnCours == MENU)
                         {
-                            jeu->sceneEnCours = SCORE;
+                            jeu->sceneEnCours = SCORE_MENU;
                         }
                         else if(jeu->sceneEnCours == LEVEL_SELECTOR)
                         {
                             beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
+                            snake->orientation = 0;
+                            snake->lengthQueue = 0;
                             m = ChargerMap("txt/level_2_2.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
@@ -166,6 +153,8 @@ int main ( int argc, char** argv )
                             beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
+                            snake->orientation = 0;
+                            snake->lengthQueue = 0;
                             m = ChargerMap("txt/level_2_3.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
@@ -177,6 +166,8 @@ int main ( int argc, char** argv )
                             beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
+                            snake->orientation = 0;
+                            snake->lengthQueue = 0;
                             m = ChargerMap("txt/level_3_1.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
@@ -188,6 +179,8 @@ int main ( int argc, char** argv )
                             beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
+                            snake->orientation = 0;
+                            snake->lengthQueue = 0;
                             m = ChargerMap("txt/level_3_2.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
@@ -199,7 +192,9 @@ int main ( int argc, char** argv )
                             beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
-                            m = ChargerMap("txt/level_3_2.txt");
+                            snake->orientation = 0;
+                            snake->lengthQueue = 0;
+                            m = ChargerMap("txt/level_3_3.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
                     }
@@ -210,21 +205,48 @@ int main ( int argc, char** argv )
                             beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
+                            snake->orientation = 0;
+                            snake->lengthQueue = 0;
                             m = ChargerMap("txt/level_3_3.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
                     }
-
                     break;
                 }
             } // end switch
         } // end of message processing
+
+        //ACTION SUR LES DIFFERENTS ETATS DE JEU
+        if(jeu->sceneEnCours == MENU)
+        {
+            afficherMenu(screen);
+        }
+        if(jeu->sceneEnCours == IN_GAME)
+        {
+            play(m,snake,screen, jeu);
+        }
+        if(jeu->sceneEnCours == SCORE)
+        {
+            afficherScore(snake, screen);
+        }
+        if(jeu->sceneEnCours == LEVEL_SELECTOR)
+        {
+            afficherLevelSelector(screen);
+        }
+        if(jeu->sceneEnCours == REGLE)
+        {
+            afficherRegle(screen);
+        }
+        if(jeu->sceneEnCours == SCORE_MENU)
+        {
+            afficherBestScore(screen);
+        }
     } // end main loop
 
     LibererMap(m);
     libererSnake(snake);
 
-    // Tout est bien
+    // Tout est ok
     TTF_Quit();
     SDL_Quit();
     return 0;

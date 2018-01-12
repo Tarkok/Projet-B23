@@ -16,24 +16,20 @@ void randomFruit(Map* m)
         if(objetAleat >= 0 && objetAleat <= 70)
         {
                 m->schema[xAleat][yAleat] = POMME;
-                m->nbFruit++;
         }
         else
         {
             if(objetAleat > 60 && objetAleat <= 85)
             {
                 m->schema[xAleat][yAleat] = POMME_MALUS;
-                m->nbFruit++;
             }
             else if(objetAleat > 75 && objetAleat <= 95)
             {
                 m->schema[xAleat][yAleat] = POMME_BONUS;
-                m->nbFruit++;
             }
             else if(objetAleat > 95 && objetAleat <= 100)
             {
                 m->schema[xAleat][yAleat] = POMME_GOLDEN;
-                m->nbFruit++;
             }
         }
 }
@@ -46,27 +42,6 @@ void play(Map* m, Snake* snake, SDL_Surface* screen, Game* g)
     checkTile(snake, m, screen, g);
     AfficherSnake(snake, screen);
     SDL_Flip(screen);
-    if(m->vitesse == 1)
-    {
-            while(SDL_PollEvent(SDL_KEYDOWN) == 0)
-            {
-                SDL_Delay(100);
-            }
-    }
-
     SDL_Delay(m->vitesse);
 }
 
-void stockerScore(Snake* snake, int bestScore[3])
-{
-    chargerBestScore(bestScore);
-}
-
-void chargerBestScore(int bestScore[3])
-{
-    FILE* fichier = fopen("txt/score.txt", "r");
-    fscanf(fichier, bestScore[0]);
-    fscanf(fichier, bestScore[1]);
-    fscanf(fichier, bestScore[2]);
-    fclose(fichier);
-}

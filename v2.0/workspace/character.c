@@ -28,7 +28,7 @@ void updatePosition(Snake* snake)
         snake->positionTete.x-=32;
         if(snake->positionTete.x < 0)
         {
-            snake->positionTete.x = 0; //Bug du négatif
+            snake->positionTete.x = 0;
         }
         snake->teteAff = snake->imgTete[0];
         snake->queueAff = snake->imgQueue[0];
@@ -42,10 +42,10 @@ void updatePosition(Snake* snake)
         snake->positionTete.y-=32;
         if(snake->positionTete.y < 0)
         {
-                    snake->positionTete.y = 0;
+            snake->positionTete.y = 0;
         }
         snake->teteAff = snake->imgTete[1];
-        snake->queueAff = snake->imgQueue[1]; //BUG
+        snake->queueAff = snake->imgQueue[1];
         break;
     default:
         break;
@@ -58,11 +58,11 @@ void updatePosition(Snake* snake)
 Snake* loadSnake()
 {
     Snake* s;
-    s->positionX = s->positionTete.x / 32;
-    s->positionY = s->positionTete.y / 32;
 
     s->orientation = 0;
     s->lengthQueue = 0;
+
+    s->positionCorps = (SDL_Rect**)malloc(sizeof(SDL_Rect**)*1200);  //Zone de mémoire réservée pour les positions du snake
 
     // Creation dynamique du tableau pour les differentes tete
     s->imgTete = (SDL_Surface**)malloc(sizeof(SDL_Surface**)*8);
@@ -90,6 +90,7 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
     if( (m->props[m->schema[s->positionX][s->positionY]].type == PIEGE) ||
         (m->props[m->schema[s->positionX][s->positionY]].type == MUR && m->crossWall == 0) )  //Meurt
     {
+            LibererMap(m);
             g->sceneEnCours = SCORE; //Menu Score
     }
 
@@ -122,11 +123,13 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
         }
     }
 
-    int i;
+    // On se mange sa propre queue
+   int i;
     for(i = 0; i < s->lengthQueue; i++)
     {
         if(s->positionTete.x == s->positionCorps[i].x && s->positionTete.y == s->positionCorps[i].y)
         {
+             LibererMap(m);
              g->sceneEnCours = SCORE; // Meurt, écran des scores
         }
     }
@@ -143,23 +146,29 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
 
 void eatFruit(Snake* snake, Map* m)
 {
-    if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME)
+   if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME) //Si on mange une pomme
+   {
         snake->lengthQueue++;
-    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_BONUS)
+   }
+    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_BONUS) //Pomme rouge vif
+    {
         snake->lengthQueue = snake->lengthQueue + 2;
-    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_GOLDEN)
-        snake->lengthQueue = snake->lengthQueue + 3;
-    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_MALUS)
+    }
+    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_GOLDEN) //Pomme gold
+    {
+                snake->lengthQueue = snake->lengthQueue + 3;
+    }
+    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_MALUS) //Pomme gatee
     {
         if(snake->lengthQueue > 0)
             snake->lengthQueue--;
     }
 
-    m->nbFruit--;
     m->schema[snake->positionX][snake->positionY] = VIDE;
     randomFruit(m);
 }
 
+// Vide le Snake de la mémoire
 void libererSnake(Snake* snake)
 {
     SDL_FreeSurface(snake->imgCorps);

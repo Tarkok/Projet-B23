@@ -19,7 +19,7 @@ typedef struct {
     SDL_Surface* queueAff;
 
 
-    SDL_Rect positionCorps[];
+    SDL_Rect* positionCorps;
 }Snake;
 
 typedef unsigned char tileindex;
@@ -44,20 +44,13 @@ typedef struct
 	int vitesse;
 	int crossWall;
 
-	int nbFruit;
+
 } Map;
 
 typedef struct{
     SDL_Rect* RectPosition;
     SDL_Surface* fichierImage;
 }Button;
-
-typedef struct{
-
-    SDL_Surface* imgFond;
-    SDL_Rect position;
-
-}GameScene;
 
 typedef struct{
 
