@@ -27,46 +27,23 @@ int main ( int argc, char** argv )
 
     // Init la map
     Map *m;
-
     // Init le snake
-    Snake* snake = loadSnake();
+    Snake* snake ;
+
+    snake = loadSnake();
 
     // Boucle principale
     //Creer le jeu et les etats de jeu
     Game* jeu;
 
-    jeu->sceneEnCours = MENU;
+    jeu->sceneEnCours = NULL;
 
     // Game main loop
 
     int done = 0;
     while (done != 1)
     {
-        //ACTION SUR LES DIFFERENTS ETATS DE JEU
-        if(jeu->sceneEnCours == MENU)
-        {
-            afficherMenu(screen);
-        }
-        if(jeu->sceneEnCours == IN_GAME)
-        {
-            play(m,snake,screen, jeu);
-        }
-        if(jeu->sceneEnCours == SCORE)
-        {
-            afficherScore(snake, screen);
-        }
-        if(jeu->sceneEnCours == LEVEL_SELECTOR)
-        {
-            afficherLevelSelector(screen);
-        }
-        if(jeu->sceneEnCours == REGLE)
-        {
-            afficherRegle(screen);
-        }
-        if(jeu->sceneEnCours == SCORE_MENU)
-        {
-            afficherBestScore(screen);
-        }
+
 
         // message processing loop
         SDL_Event event;
@@ -233,11 +210,36 @@ int main ( int argc, char** argv )
                             jeu->sceneEnCours = IN_GAME;
                         }
                     }
-
                     break;
                 }
             } // end switch
         } // end of message processing
+
+        //ACTION SUR LES DIFFERENTS ETATS DE JEU
+        if(jeu->sceneEnCours == MENU)
+        {
+            afficherMenu(screen);
+        }
+        if(jeu->sceneEnCours == IN_GAME)
+        {
+            play(m,snake,screen, jeu);
+        }
+        if(jeu->sceneEnCours == SCORE)
+        {
+            afficherScore(snake, screen);
+        }
+        if(jeu->sceneEnCours == LEVEL_SELECTOR)
+        {
+            afficherLevelSelector(screen);
+        }
+        if(jeu->sceneEnCours == REGLE)
+        {
+            afficherRegle(screen);
+        }
+        if(jeu->sceneEnCours == SCORE_MENU)
+        {
+            afficherBestScore(screen);
+        }
     } // end main loop
 
     LibererMap(m);

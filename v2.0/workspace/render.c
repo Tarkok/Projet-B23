@@ -10,9 +10,7 @@ SDL_Surface* LoadImage32(const char* fichier_image)
 	SDL_Surface* image_ram = SDL_LoadBMP(fichier_image);	// charge l'image dans image_ram en RAM
 	if (image_ram==NULL)
 	{
-		printf("Image %s introuvable !\n",fichier_image);
 		SDL_Quit();
-		system("pause");
 		exit(-1);
 	}
 	image_result = SDL_DisplayFormat(image_ram);
@@ -123,7 +121,7 @@ int AfficherMap(Map* m, SDL_Surface* screen, Snake* s)
     position.x = 32;
     position.y = 5;
 
-    char affichage[80];
+    char affichage[152];
     sprintf(affichage, "Score  : %d    ¥    Time : %d", s->lengthQueue, gameTime);
 
     police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
@@ -163,7 +161,7 @@ void AfficherSnake(Snake* snake, SDL_Surface* screen)
     SDL_BlitSurface(snake->teteAff,NULL ,screen, &snake->positionTete);
 
     int i;
-    for(i = 0; i < snake->lengthQueue+1; i++)
+    for(i = 0; i < snake->lengthQueue; i++)
     {
         SDL_BlitSurface(snake->imgCorps, NULL, screen, &snake->positionCorps[i]);
     }
@@ -188,7 +186,7 @@ void afficherScore(Snake* s, SDL_Surface* screen)
     police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
     texte = TTF_RenderText_Blended(police, score , couleurNoire);
 
-    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 17, 26, 112));
+    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 255, 255, 255));
     SDL_BlitSurface(texte, NULL, screen, &position);
     SDL_Flip(screen);
 }

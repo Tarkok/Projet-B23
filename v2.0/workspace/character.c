@@ -28,7 +28,7 @@ void updatePosition(Snake* snake)
         snake->positionTete.x-=32;
         if(snake->positionTete.x < 0)
         {
-            snake->positionTete.x = 0; //Bug du négatif
+            snake->positionTete.x = 0;
         }
         snake->teteAff = snake->imgTete[0];
         snake->queueAff = snake->imgQueue[0];
@@ -42,7 +42,7 @@ void updatePosition(Snake* snake)
         snake->positionTete.y-=32;
         if(snake->positionTete.y < 0)
         {
-                    snake->positionTete.y = 0;
+            snake->positionTete.y = 0;
         }
         snake->teteAff = snake->imgTete[1];
         snake->queueAff = snake->imgQueue[1];
@@ -58,11 +58,11 @@ void updatePosition(Snake* snake)
 Snake* loadSnake()
 {
     Snake* s;
-    s->positionX = s->positionTete.x / 32;
-    s->positionY = s->positionTete.y / 32;
 
     s->orientation = 0;
     s->lengthQueue = 0;
+
+    s->positionCorps = (SDL_Rect**)malloc(sizeof(SDL_Rect**)*1200);
 
     // Creation dynamique du tableau pour les differentes tete
     s->imgTete = (SDL_Surface**)malloc(sizeof(SDL_Surface**)*8);
@@ -90,6 +90,7 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
     if( (m->props[m->schema[s->positionX][s->positionY]].type == PIEGE) ||
         (m->props[m->schema[s->positionX][s->positionY]].type == MUR && m->crossWall == 0) )  //Meurt
     {
+            LibererMap(m);
             g->sceneEnCours = SCORE; //Menu Score
     }
 
@@ -128,6 +129,7 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
     {
         if(s->positionTete.x == s->positionCorps[i].x && s->positionTete.y == s->positionCorps[i].y)
         {
+             LibererMap(m);
              g->sceneEnCours = SCORE; // Meurt, écran des scores
         }
     }
@@ -145,11 +147,17 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
 void eatFruit(Snake* snake, Map* m)
 {
    if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME)
+   {
         snake->lengthQueue++;
+   }
     else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_BONUS)
+    {
         snake->lengthQueue = snake->lengthQueue + 2;
+    }
     else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_GOLDEN)
-        snake->lengthQueue = snake->lengthQueue + 3;
+    {
+                snake->lengthQueue = snake->lengthQueue + 3;
+    }
     else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_MALUS)
     {
         if(snake->lengthQueue > 0)

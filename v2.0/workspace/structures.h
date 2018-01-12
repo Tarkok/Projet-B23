@@ -19,7 +19,7 @@ typedef struct {
     SDL_Surface* queueAff;
 
 
-    SDL_Rect positionCorps[];
+    SDL_Rect* positionCorps;
 }Snake;
 
 typedef unsigned char tileindex;
