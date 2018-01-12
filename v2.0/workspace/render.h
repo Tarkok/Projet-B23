@@ -2,6 +2,7 @@
 #define RENDER_H_INCLUDED
 
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include <string.h>
 
 #include "utility.h"

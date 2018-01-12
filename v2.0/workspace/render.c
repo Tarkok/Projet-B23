@@ -173,12 +173,44 @@ void afficherGameScene(GameScene* gs, SDL_Surface* screen)
 
 void afficherScore(Snake* s, SDL_Surface* screen)
 {
+    TTF_Init();
+    TTF_Font* police = NULL;
+    SDL_Surface* texte = NULL;
+    SDL_Rect position;
+    SDL_Color couleurNoire = {0, 0, 0};
+    position.x = 1280/2;
+    position.y = 640/2;
+
+    char score[20];
+    sprintf(score, "Score : %d", s->lengthQueue);
+
+    police = TTF_OpenFont("media/consolab.ttf", 20);
+    texte = TTF_RenderText_Blended(police, score , couleurNoire);
+
+
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 17, 26, 112));
+    SDL_BlitSurface(texte, NULL, screen, &position);
     SDL_Flip(screen);
 }
 
-void afficherMenu(SDL_Surface* s)
+void afficherMenu(SDL_Surface* screen)
 {
-    SDL_FillRect(s, NULL, SDL_MapRGB(s->format, 17, 206, 112));
-    SDL_Flip(s);
+    TTF_Init();
+    TTF_Font* police = NULL;
+    SDL_Surface* texte = NULL;
+    SDL_Rect position;
+    SDL_Color couleurNoire = {0, 0, 0};
+    position.x = 50;
+    position.y = 50;
+
+
+    police = TTF_OpenFont("media/consolab.ttf", 20);
+    texte = TTF_RenderText_Blended(police, "Play !"  , couleurNoire);
+
+    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 17, 206, 112));
+    SDL_BlitSurface(texte, NULL, screen, &position);
+    SDL_Flip(screen);
+
+    //Fermer la font :
+    TTF_CloseFont(police);
 }
