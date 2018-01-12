@@ -79,6 +79,7 @@ int main ( int argc, char** argv )
                     }
                     if(event.key.keysym.sym == SDLK_SPACE)
                     {
+                        beginTime = clock();
                         jeu->sceneEnCours = IN_GAME;
                     }
                     if(event.key.keysym.sym == SDLK_e)

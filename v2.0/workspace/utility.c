@@ -43,6 +43,7 @@ void randomFruit(Map* m)
 
 void play(Map* m, Snake* snake, SDL_Surface* screen, Game* g)
 {
+            gameTime = (clock() - beginTime)/1000 ;
 
             AfficherMap(m,screen, snake);
             AfficherSnake(snake, screen);

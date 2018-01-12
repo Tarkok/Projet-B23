@@ -124,7 +124,7 @@ int AfficherMap(Map* m,SDL_Surface* screen, Snake* s)
     position.y = 5;
 
     char affichage[50];
-    sprintf(affichage, "Score  : %d    ¥   Temps : %d", s->lengthQueue);
+    sprintf(affichage, "Score  : %d    ¥   Time : %d", s->lengthQueue, gameTime);
 
     police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
     texte = TTF_RenderText_Blended(police, affichage , couleurNoire);
@@ -197,8 +197,8 @@ void afficherScore(Snake* s, SDL_Surface* screen)
     position.x = 1280/2;
     position.y = 640/2;
 
-    char score[20];
-    sprintf(score, "Score : %d", s->lengthQueue);
+    char score[50];
+    sprintf(score, "Score : %d Time : %d", s->lengthQueue, gameTime);
 
     police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
     texte = TTF_RenderText_Blended(police, score , couleurNoire);
