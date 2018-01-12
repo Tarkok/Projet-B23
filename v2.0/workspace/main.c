@@ -13,6 +13,7 @@
 
 int main ( int argc, char** argv )
 {
+
     // On init la video SDL
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
@@ -30,7 +31,6 @@ int main ( int argc, char** argv )
     // Init la map
     Map *m;
 
-
     // Init le snake
     Snake* snake = loadSnake();
 
@@ -45,7 +45,6 @@ int main ( int argc, char** argv )
     int done = 0;
     while (done != 1)
     {
-
         if(jeu->sceneEnCours == MENU)
         {
             afficherMenu(screen);
@@ -109,8 +108,6 @@ int main ( int argc, char** argv )
                         {
                             jeu->sceneEnCours = MENU;
                         }
-
-
                         else if(jeu->sceneEnCours == MENU)
                         {
                             jeu->sceneEnCours = LEVEL_SELECTOR;
@@ -125,6 +122,7 @@ int main ( int argc, char** argv )
                         }
                         else if(jeu->sceneEnCours == LEVEL_SELECTOR)
                         {
+                            beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
                             m = ChargerMap("txt/level_1_1.txt");
@@ -154,6 +152,7 @@ int main ( int argc, char** argv )
                         }
                         else if(jeu->sceneEnCours == LEVEL_SELECTOR)
                         {
+                            beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
                             m = ChargerMap("txt/level_2_2.txt");
@@ -164,6 +163,7 @@ int main ( int argc, char** argv )
                     {
                         if(jeu->sceneEnCours == LEVEL_SELECTOR)
                         {
+                            beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
                             m = ChargerMap("txt/level_2_3.txt");
@@ -174,6 +174,7 @@ int main ( int argc, char** argv )
                     {
                         if(jeu->sceneEnCours == LEVEL_SELECTOR)
                         {
+                            beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
                             m = ChargerMap("txt/level_3_1.txt");
@@ -184,6 +185,7 @@ int main ( int argc, char** argv )
                     {
                         if(jeu->sceneEnCours == LEVEL_SELECTOR)
                         {
+                            beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
                             m = ChargerMap("txt/level_3_2.txt");
@@ -194,6 +196,7 @@ int main ( int argc, char** argv )
                     {
                         if(jeu->sceneEnCours == LEVEL_SELECTOR)
                         {
+                            beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
                             m = ChargerMap("txt/level_3_2.txt");
@@ -204,6 +207,7 @@ int main ( int argc, char** argv )
                     {
                         if(jeu->sceneEnCours == LEVEL_SELECTOR)
                         {
+                            beginTime = clock();
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
                             m = ChargerMap("txt/level_3_3.txt");

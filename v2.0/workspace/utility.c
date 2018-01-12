@@ -46,6 +46,14 @@ void play(Map* m, Snake* snake, SDL_Surface* screen, Game* g)
     checkTile(snake, m, screen, g);
     AfficherSnake(snake, screen);
     SDL_Flip(screen);
+    if(m->vitesse == 1)
+    {
+            while(SDL_PollEvent(SDL_KEYDOWN) == 0)
+            {
+                SDL_Delay(100);
+            }
+    }
+
     SDL_Delay(m->vitesse);
 }
 
