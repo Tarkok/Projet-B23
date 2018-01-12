@@ -15,6 +15,8 @@ simplifie les appels*/
 enum TILE_NAME{MUR, VIDE, PIEGE, POMME, POMME_BONUS, POMME_MALUS , POMME_GOLDEN};
 enum GAME_SCENE{MENU, IN_GAME, LEVEL_SELECTOR, REGLE, SCORE};
 
+int bestScore[3];
+
 clock_t beginTime;
 clock_t gameTime;
 

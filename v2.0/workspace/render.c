@@ -203,6 +203,11 @@ void afficherScore(Snake* s, SDL_Surface* screen)
     police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
     texte = TTF_RenderText_Blended(police, score , couleurNoire);
 
+    chargerBestScore(bestScore);
+    if(score)
+    {
+
+    }
 
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 17, 26, 112));
     SDL_BlitSurface(texte, NULL, screen, &position);
