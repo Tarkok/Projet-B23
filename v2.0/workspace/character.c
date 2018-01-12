@@ -155,7 +155,6 @@ void eatFruit(Snake* snake, Map* m)
             snake->lengthQueue--;
     }
 
-    m->nbFruit--;
     m->schema[snake->positionX][snake->positionY] = VIDE;
     randomFruit(m);
 }

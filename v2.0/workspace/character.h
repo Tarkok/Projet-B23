@@ -24,7 +24,4 @@ void checkTile(Snake* snake, Map* m, SDL_Surface* screen, Game* g);
 // Vide le Snake de la mémoire
 void libererSnake(Snake* snake);
 
-// Affiche le score, le stocke et retourne au menu
-void mourir(Game* g);
-
 #endif // CHARACTER_H_INCLUDED

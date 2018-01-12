@@ -13,7 +13,6 @@
 
 int main ( int argc, char** argv )
 {
-
     // On init la video SDL
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
@@ -22,8 +21,6 @@ int main ( int argc, char** argv )
     }
     // Icone du programme
     SDL_WM_SetIcon(SDL_LoadBMP("media/assets/ico.bmp"), NULL);
-    TTF_Init();
-
     // Init une fenetre SDL
     SDL_Surface* screen = SDL_SetVideoMode(1280, 640, 16, SDL_HWSURFACE|SDL_DOUBLEBUF); //Pour tile 32 px 40 * 20
     SDL_WM_SetCaption("Snake v2.0", NULL);
@@ -45,6 +42,7 @@ int main ( int argc, char** argv )
     int done = 0;
     while (done != 1)
     {
+        //ACTION SUR LES DIFFERENTS ETATS DE JEU
         if(jeu->sceneEnCours == MENU)
         {
             afficherMenu(screen);
@@ -64,6 +62,10 @@ int main ( int argc, char** argv )
         if(jeu->sceneEnCours == REGLE)
         {
             afficherRegle(screen);
+        }
+        if(jeu->sceneEnCours == SCORE_MENU)
+        {
+            afficherBestScore(screen);
         }
 
         // message processing loop
@@ -127,6 +129,7 @@ int main ( int argc, char** argv )
                             snake->lengthQueue = 0;
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
+
                             m = ChargerMap("txt/level_1_1.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
@@ -153,7 +156,7 @@ int main ( int argc, char** argv )
                     {
                         if(jeu->sceneEnCours == MENU)
                         {
-                            jeu->sceneEnCours = SCORE;
+                            jeu->sceneEnCours = SCORE_MENU;
                         }
                         else if(jeu->sceneEnCours == LEVEL_SELECTOR)
                         {
@@ -214,7 +217,7 @@ int main ( int argc, char** argv )
                             snake->positionTete.y = 64;
                             snake->orientation = 0;
                             snake->lengthQueue = 0;
-                            m = ChargerMap("txt/level_3_2.txt");
+                            m = ChargerMap("txt/level_3_3.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
                     }
