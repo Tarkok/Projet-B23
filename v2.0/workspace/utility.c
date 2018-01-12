@@ -40,11 +40,11 @@ void randomFruit(Map* m)
 
 void play(Map* m, Snake* snake, SDL_Surface* screen, Game* g)
 {
-    gameTime = (clock() - beginTime)/1000 ;
-    AfficherMap(m,screen, snake);
-    AfficherSnake(snake, screen);
+    gameTime = (clock() - beginTime)/1000;
     updatePosition(snake);
+    AfficherMap(m,screen, snake);
     checkTile(snake, m, screen, g);
+    AfficherSnake(snake, screen);
     SDL_Flip(screen);
     SDL_Delay(m->vitesse);
 }
@@ -56,7 +56,7 @@ void stockerScore(Snake* snake, int bestScore[3])
 
 void chargerBestScore(int bestScore[3])
 {
-    FILE* fichier = fopen("score.txt", "r");
+    FILE* fichier = fopen("txt/score.txt", "r");
     fscanf(fichier, bestScore[0]);
     fscanf(fichier, bestScore[1]);
     fscanf(fichier, bestScore[2]);

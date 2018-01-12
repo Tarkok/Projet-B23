@@ -163,7 +163,8 @@ void eatFruit(Snake* snake, Map* m)
 void libererSnake(Snake* snake)
 {
     SDL_FreeSurface(snake->imgCorps);
-    for(int i = 0; i < 4; i++)
+    int i;
+    for(i = 0; i < 4; i++)
     {
         SDL_FreeSurface(snake->imgQueue[i]);
         SDL_FreeSurface(snake->imgTete[i]);

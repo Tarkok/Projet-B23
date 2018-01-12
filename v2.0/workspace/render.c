@@ -112,7 +112,7 @@ Map* ChargerMap(const char* level)
 	return m;
 }
 
-int AfficherMap(Map* m, SDL_Surface* screen)
+int AfficherMap(Map* m, SDL_Surface* screen, Snake* s)
 {
     //Gestion du texte
     TTF_Init();
