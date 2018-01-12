@@ -11,7 +11,7 @@
 #include "structures.h"
 
 
-int main ( int argc, char** argv )
+int main ( int argc, char** argv ) // Main surchargé pour SDL
 {
     // On init la video SDL
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
@@ -60,7 +60,7 @@ int main ( int argc, char** argv )
                 // check for keypresses
             case SDL_KEYDOWN:
                 {
-                    // exit if ESCAPE is pressed
+                    // CONTROLES EN JEU
                     if (event.key.keysym.sym == SDLK_ESCAPE)
                     {
                         jeu->sceneEnCours = MENU;
@@ -92,7 +92,8 @@ int main ( int argc, char** argv )
                             jeu->sceneEnCours = LEVEL_SELECTOR;
                         }
                     }
-                    /** NAVIGATION DANS LES MENUS */
+
+                    /** NAVIGATION DANS LES MENUS : CHOIX DU LEVEL */
                     if(event.key.keysym.sym == SDLK_1)
                     {
                         if(jeu->sceneEnCours == MENU)
@@ -245,7 +246,7 @@ int main ( int argc, char** argv )
     LibererMap(m);
     libererSnake(snake);
 
-    // Tout est bien
+    // Tout est ok
     TTF_Quit();
     SDL_Quit();
     return 0;

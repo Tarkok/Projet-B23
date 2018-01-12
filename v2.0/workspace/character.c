@@ -62,7 +62,7 @@ Snake* loadSnake()
     s->orientation = 0;
     s->lengthQueue = 0;
 
-    s->positionCorps = (SDL_Rect**)malloc(sizeof(SDL_Rect**)*1200);
+    s->positionCorps = (SDL_Rect**)malloc(sizeof(SDL_Rect**)*1200);  //Zone de mémoire réservée pour les positions du snake
 
     // Creation dynamique du tableau pour les differentes tete
     s->imgTete = (SDL_Surface**)malloc(sizeof(SDL_Surface**)*8);
@@ -123,7 +123,7 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
         }
     }
 
-    //On se mange sa propre queue
+    // On se mange sa propre queue
    int i;
     for(i = 0; i < s->lengthQueue; i++)
     {
@@ -146,19 +146,19 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
 
 void eatFruit(Snake* snake, Map* m)
 {
-   if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME)
+   if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME) //Si on mange une pomme
    {
         snake->lengthQueue++;
    }
-    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_BONUS)
+    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_BONUS) //Pomme rouge vif
     {
         snake->lengthQueue = snake->lengthQueue + 2;
     }
-    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_GOLDEN)
+    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_GOLDEN) //Pomme gold
     {
                 snake->lengthQueue = snake->lengthQueue + 3;
     }
-    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_MALUS)
+    else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_MALUS) //Pomme gatee
     {
         if(snake->lengthQueue > 0)
             snake->lengthQueue--;
@@ -168,6 +168,7 @@ void eatFruit(Snake* snake, Map* m)
     randomFruit(m);
 }
 
+// Vide le Snake de la mémoire
 void libererSnake(Snake* snake)
 {
     SDL_FreeSurface(snake->imgCorps);
