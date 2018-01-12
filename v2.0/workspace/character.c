@@ -144,7 +144,7 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
 
 void eatFruit(Snake* snake, Map* m)
 {
-    if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME)
+   if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME)
         snake->lengthQueue++;
     else if(m->props[m->schema[snake->positionX][snake->positionY]].type == POMME_BONUS)
         snake->lengthQueue = snake->lengthQueue + 2;

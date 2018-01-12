@@ -124,12 +124,11 @@ int main ( int argc, char** argv )
                         }
                         else if(jeu->sceneEnCours == LEVEL_SELECTOR)
                         {
-                            beginTime = clock();
                             snake->orientation = 0;
                             snake->lengthQueue = 0;
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
-
+                            beginTime = clock();
                             m = ChargerMap("txt/level_1_1.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
@@ -145,9 +144,9 @@ int main ( int argc, char** argv )
                         {
                             snake->positionTete.x = 64;
                             snake->positionTete.y = 64;
-                            beginTime = clock();
                             snake->orientation = 0;
                             snake->lengthQueue = 0;
+                            beginTime = clock();
                             m = ChargerMap("txt/level_2_1.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
