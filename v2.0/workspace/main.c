@@ -60,7 +60,18 @@ int main ( int argc, char** argv )
                 {
                     // exit if ESCAPE is pressed
                     if (event.key.keysym.sym == SDLK_ESCAPE)
-                        done = 1;
+                    {
+                        if(jeu->sceneEnCours == MENU)
+                        {
+                                libererSnake(snake);
+                                LibererMap(m);
+                                done = 1;
+                        }
+                        if(jeu->sceneEnCours == IN_GAME)
+                        {
+                            jeu->sceneEnCours = MENU;
+                        }
+                    }
                     if(event.key.keysym.sym == SDLK_s)
                     {
                         changeDirection(0, snake);
@@ -87,6 +98,10 @@ int main ( int argc, char** argv )
 
                         else if(jeu->sceneEnCours == MENU)
                         {
+                            snake->lengthQueue = 0;
+                            snake->orientation = 2;
+                            snake->positionTete.x = 64;
+                            snake->positionTete.y = 64;
                             beginTime = clock();
                             jeu->sceneEnCours = IN_GAME;
                         }

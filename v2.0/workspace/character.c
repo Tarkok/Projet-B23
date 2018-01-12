@@ -12,7 +12,6 @@ void updatePosition(Snake* snake)
     for(i = snake->lengthQueue; i >= 1; i--)
     {
         snake->positionCorps[i] = snake->positionCorps[i-1];
-        //snake->orientationCorps[i] = snake->orientationCorps[i-1];
     }
     snake->positionCorps[0] = snake->positionTete;
 
@@ -27,6 +26,10 @@ void updatePosition(Snake* snake)
         break;
     case 1:
         snake->positionTete.x-=32;
+        if(snake->positionTete.x < 0)
+        {
+                    snake->positionTete.x = 0;
+        }
         snake->teteAff = snake->imgTete[0];
         snake->queueAff = snake->imgQueue[0];
         break;
@@ -37,13 +40,16 @@ void updatePosition(Snake* snake)
         break;
     case 3:
         snake->positionTete.y-=32;
+        if(snake->positionTete.y < 0)
+        {
+                    snake->positionTete.y = 0;
+        }
         snake->teteAff = snake->imgTete[1];
         snake->queueAff = snake->imgQueue[1];
         break;
     default:
         break;
     }
-
     snake->positionX = snake->positionTete.x / 32;
     snake->positionY = snake->positionTete.y / 32;
 
@@ -88,9 +94,38 @@ Snake* loadSnake()
 void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
 {
     //Si snake cogne un mur
-    if(m->props[m->schema[s->positionX][s->positionY]].type == PIEGE || m->props[m->schema[s->positionX][s->positionY]].type == MUR )
+    if(m->props[m->schema[s->positionX][s->positionY]].type == PIEGE || (m->props[m->schema[s->positionX][s->positionY]].type == MUR && m->crossWall == 0))
     {
             g->sceneEnCours = SCORE;
+    }
+
+    //Si le crosswall est active
+    if(m->props[m->schema[s->positionX][s->positionY]].type == MUR && m->crossWall == 1)
+    {
+        //On le teleporte de l'autre cote en fonction de sa position
+        switch(s->positionTete.x)
+        {
+        case 1280-32:
+            s->positionTete.x = 32;
+            break;
+        case 0:
+            s->positionTete.x = 1280-32;
+            break;
+        default:
+            break;
+        }
+
+        switch(s->positionTete.y)
+        {
+        case 640-32:
+            s->positionTete.y = 32;
+            break;
+        case 0:
+            s->positionTete.y = 640-64;
+            break;
+        default:
+            break;
+        }
     }
 
     int i;
