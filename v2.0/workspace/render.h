@@ -27,4 +27,7 @@ void afficherGameScene(GameScene* gs, SDL_Surface* screen);
 void afficherMenu(SDL_Surface* screen);
 void afficherScore(Snake* s, SDL_Surface* screen);
 
+afficherLevelSelector(SDL_Surface* screen);
+afficherRegle(SDL_Surface* screen);
+
 #endif // RENDER_H_INCLUDED
