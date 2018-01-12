@@ -13,6 +13,7 @@
 
 int main ( int argc, char** argv )
 {
+
     // On init la video SDL
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
@@ -29,7 +30,6 @@ int main ( int argc, char** argv )
 
     // Init la map
     Map *m;
-    m = ChargerMap("txt/level_1_1.txt");
 
     // Init le snake
     Snake* snake = loadSnake();
@@ -45,7 +45,6 @@ int main ( int argc, char** argv )
     int done = 0;
     while (done != 1)
     {
-
         if(jeu->sceneEnCours == MENU)
         {
             afficherMenu(screen);
@@ -57,6 +56,14 @@ int main ( int argc, char** argv )
         if(jeu->sceneEnCours == SCORE)
         {
             afficherScore(snake, screen);
+        }
+        if(jeu->sceneEnCours == LEVEL_SELECTOR)
+        {
+            afficherLevelSelector(screen);
+        }
+        if(jeu->sceneEnCours == REGLE)
+        {
+            afficherRegle(screen);
         }
 
         // message processing loop
@@ -77,16 +84,7 @@ int main ( int argc, char** argv )
                     // exit if ESCAPE is pressed
                     if (event.key.keysym.sym == SDLK_ESCAPE)
                     {
-                        if(jeu->sceneEnCours == MENU)
-                        {
-                                libererSnake(snake);
-                                LibererMap(m);
-                                done = 1;
-                        }
-                        if(jeu->sceneEnCours == IN_GAME)
-                        {
-                            jeu->sceneEnCours = MENU;
-                        }
+                        jeu->sceneEnCours = MENU;
                     }
                     if(event.key.keysym.sym == SDLK_s)
                     {
@@ -110,22 +108,113 @@ int main ( int argc, char** argv )
                         {
                             jeu->sceneEnCours = MENU;
                         }
-
-
                         else if(jeu->sceneEnCours == MENU)
                         {
-                            snake->lengthQueue = 0;
-                            snake->orientation = 2;
-                            snake->positionTete.x = 64; // Position X de départ
-                            snake->positionTete.y = 64; // Position Y de départ
+                            jeu->sceneEnCours = LEVEL_SELECTOR;
+                        }
+                    }
+                    /** NAVIGATION DANS LES MENUS */
+                    if(event.key.keysym.sym == SDLK_1)
+                    {
+                        if(jeu->sceneEnCours == MENU)
+                        {
+                            jeu->sceneEnCours = LEVEL_SELECTOR;
+                        }
+                        else if(jeu->sceneEnCours == LEVEL_SELECTOR)
+                        {
                             beginTime = clock();
+                            snake->positionTete.x = 64;
+                            snake->positionTete.y = 64;
+                            m = ChargerMap("txt/level_1_1.txt");
+                            jeu->sceneEnCours = IN_GAME;
+                        }
+
+                    }
+                    if(event.key.keysym.sym == SDLK_2)
+                    {
+                        if(jeu->sceneEnCours == MENU)
+                        {
+                            jeu->sceneEnCours = REGLE;
+                        }
+                        else if(jeu->sceneEnCours == LEVEL_SELECTOR)
+                        {
+                            snake->positionTete.x = 64;
+                            snake->positionTete.y = 64;
+                            m = ChargerMap("txt/level_2_1.txt");
                             jeu->sceneEnCours = IN_GAME;
                         }
                     }
-                    if(event.key.keysym.sym == SDLK_e)
+                    if(event.key.keysym.sym == SDLK_3)
                     {
-                        jeu->sceneEnCours = SCORE;
+                        if(jeu->sceneEnCours == MENU)
+                        {
+                            jeu->sceneEnCours = SCORE;
+                        }
+                        else if(jeu->sceneEnCours == LEVEL_SELECTOR)
+                        {
+                            beginTime = clock();
+                            snake->positionTete.x = 64;
+                            snake->positionTete.y = 64;
+                            m = ChargerMap("txt/level_2_2.txt");
+                            jeu->sceneEnCours = IN_GAME;
+                        }
                     }
+                    if(event.key.keysym.sym == SDLK_4)
+                    {
+                        if(jeu->sceneEnCours == LEVEL_SELECTOR)
+                        {
+                            beginTime = clock();
+                            snake->positionTete.x = 64;
+                            snake->positionTete.y = 64;
+                            m = ChargerMap("txt/level_2_3.txt");
+                            jeu->sceneEnCours = IN_GAME;
+                        }
+                    }
+                    if(event.key.keysym.sym == SDLK_5)
+                    {
+                        if(jeu->sceneEnCours == LEVEL_SELECTOR)
+                        {
+                            beginTime = clock();
+                            snake->positionTete.x = 64;
+                            snake->positionTete.y = 64;
+                            m = ChargerMap("txt/level_3_1.txt");
+                            jeu->sceneEnCours = IN_GAME;
+                        }
+                    }
+                    if(event.key.keysym.sym == SDLK_6)
+                    {
+                        if(jeu->sceneEnCours == LEVEL_SELECTOR)
+                        {
+                            beginTime = clock();
+                            snake->positionTete.x = 64;
+                            snake->positionTete.y = 64;
+                            m = ChargerMap("txt/level_3_2.txt");
+                            jeu->sceneEnCours = IN_GAME;
+                        }
+                    }
+                    if(event.key.keysym.sym == SDLK_7)
+                    {
+                        if(jeu->sceneEnCours == LEVEL_SELECTOR)
+                        {
+                            beginTime = clock();
+                            snake->positionTete.x = 64;
+                            snake->positionTete.y = 64;
+                            m = ChargerMap("txt/level_3_2.txt");
+                            jeu->sceneEnCours = IN_GAME;
+                        }
+                    }
+                    if(event.key.keysym.sym == SDLK_8)
+                    {
+                        if(jeu->sceneEnCours == LEVEL_SELECTOR)
+                        {
+                            beginTime = clock();
+                            snake->positionTete.x = 64;
+                            snake->positionTete.y = 64;
+                            m = ChargerMap("txt/level_3_3.txt");
+                            jeu->sceneEnCours = IN_GAME;
+                        }
+                    }
+
                     break;
                 }
             } // end switch

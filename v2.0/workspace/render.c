@@ -211,22 +211,37 @@ void afficherScore(Snake* s, SDL_Surface* screen)
 
 void afficherMenu(SDL_Surface* screen)
 {
-    TTF_Init();
-    TTF_Font* police = NULL;
-    SDL_Surface* texte = NULL;
+    SDL_Surface* Fond;
+    Fond = LoadImage32("media/assets/menucomplet.bmp");
     SDL_Rect position;
-    SDL_Color couleurNoire = {0, 0, 0};
-    position.x = 50;
-    position.y = 50;
+    position.x = 0;
+    position.y = 0;
 
-
-    police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
-    texte = TTF_RenderText_Blended(police, "Play !"  , couleurNoire);
-
-    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 17, 206, 112));
-    SDL_BlitSurface(texte, NULL, screen, &position);
+    SDL_BlitSurface(Fond, NULL, screen, &position);
     SDL_Flip(screen);
 
-    //Fermer la font :
-    TTF_CloseFont(police);
+}
+
+afficherLevelSelector(SDL_Surface* screen)
+{
+    SDL_Surface* Fond;
+    Fond = LoadImage32("media/assets/menulevel.bmp");
+    SDL_Rect position;
+    position.x = 0;
+    position.y = 0;
+
+    SDL_BlitSurface(Fond, NULL, screen, &position);
+    SDL_Flip(screen);
+}
+
+afficherRegle(SDL_Surface* screen)
+{
+    SDL_Surface* Fond;
+    Fond = LoadImage32("media/assets/menulevel.bmp");
+    SDL_Rect position;
+    position.x = 0;
+    position.y = 0;
+
+    SDL_BlitSurface(Fond, NULL, screen, &position);
+    SDL_Flip(screen);
 }
