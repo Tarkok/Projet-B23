@@ -114,6 +114,21 @@ Map* ChargerMap(const char* level)
 
 int AfficherMap(Map* m, SDL_Surface* screen)
 {
+    //Gestion du texte
+    TTF_Init();
+    TTF_Font* police = NULL;
+    SDL_Surface* texte = NULL;
+    SDL_Rect position;
+    SDL_Color couleurNoire = {255, 255, 255};
+    position.x = 32;
+    position.y = 5;
+
+    char affichage[80];
+    sprintf(affichage, "Score  : %d    ¥   Time : %d", s->lengthQueue, gameTime);
+
+    police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
+    texte = TTF_RenderText_Blended(police, affichage , couleurNoire);
+
 	int i,j;
 	SDL_Rect Rect_dest;
 	int numero_tile;
@@ -127,6 +142,7 @@ int AfficherMap(Map* m, SDL_Surface* screen)
 			SDL_BlitSurface(m->tileset,&(m->props[numero_tile].R),screen,&Rect_dest);
 		}
 	}
+	SDL_BlitSurface(texte, NULL, screen, &position);
 	return 0;
 }
 
@@ -142,3 +158,75 @@ int LibererMap(Map* m)
 	return 0;
 }
 
+void AfficherSnake(Snake* snake, SDL_Surface* screen)
+{
+    SDL_BlitSurface(snake->teteAff,NULL ,screen, &snake->positionTete);
+
+    int i;
+    for(i = 0; i < snake->lengthQueue; i++)
+    {
+        SDL_BlitSurface(snake->imgCorps, NULL, screen, &snake->positionCorps[i]);
+    }
+
+    SDL_BlitSurface(snake->queueAff, NULL, screen, &snake->positionCorps[snake->lengthQueue]);
+}
+
+GameScene* ChargerGameScene()
+{
+    GameScene* gs;
+    gs->imgFond = LoadImage32("media/assets/menu.bmp");
+    gs->position.h=32;
+    gs->position.w=320;
+    gs->position.x=0;
+    gs->position.y=0;
+}
+
+
+void afficherGameScene(GameScene* gs, SDL_Surface* screen)
+{
+    SDL_BlitSurface(gs->imgFond, NULL, screen, &gs->position);
+}
+
+void afficherScore(Snake* s, SDL_Surface* screen)
+{
+    TTF_Init();
+    TTF_Font* police = NULL;
+    SDL_Surface* texte = NULL;
+    SDL_Rect position;
+    SDL_Color couleurNoire = {0, 0, 0};
+    position.x = 1280/2;
+    position.y = 640/2;
+
+    char score[50];
+    sprintf(score, "Score : %d Time : %d", s->lengthQueue, gameTime);
+
+    police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
+    texte = TTF_RenderText_Blended(police, score , couleurNoire);
+
+
+    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 17, 26, 112));
+    SDL_BlitSurface(texte, NULL, screen, &position);
+    SDL_Flip(screen);
+}
+
+void afficherMenu(SDL_Surface* screen)
+{
+    TTF_Init();
+    TTF_Font* police = NULL;
+    SDL_Surface* texte = NULL;
+    SDL_Rect position;
+    SDL_Color couleurNoire = {0, 0, 0};
+    position.x = 50;
+    position.y = 50;
+
+
+    police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
+    texte = TTF_RenderText_Blended(police, "Play !"  , couleurNoire);
+
+    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 17, 206, 112));
+    SDL_BlitSurface(texte, NULL, screen, &position);
+    SDL_Flip(screen);
+
+    //Fermer la font :
+    TTF_CloseFont(police);
+}

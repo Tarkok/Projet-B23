@@ -40,6 +40,7 @@
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
+			<Add library="../SDL/lib/SDL_ttf.lib" />
 			<Add directory="../SDL/lib" />
 		</Linker>
 		<Unit filename="cb.bmp" />

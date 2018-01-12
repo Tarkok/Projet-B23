@@ -47,4 +47,22 @@ typedef struct
 	int nbFruit;
 } Map;
 
+typedef struct{
+    SDL_Rect* RectPosition;
+    SDL_Surface* fichierImage;
+}Button;
+
+typedef struct{
+
+    SDL_Surface* imgFond;
+    SDL_Rect position;
+
+}GameScene;
+
+typedef struct{
+
+    int sceneEnCours;
+
+}Game;
+
 #endif // STRUCTURES_H_INCLUDED

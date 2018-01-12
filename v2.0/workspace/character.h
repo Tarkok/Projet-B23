@@ -19,15 +19,12 @@ void updatePosition(Snake* snake);
 void eatFruit(Snake* snake, Map* m);
 
 // Snake change de direction
-void checkTile(Snake* snake, Map* m, SDL_Surface* screen);
-
-// Affiche le snake
-void AfficherSnake(Snake* snake, SDL_Surface* screen);
+void checkTile(Snake* snake, Map* m, SDL_Surface* screen, Game* g);
 
 // Vide le Snake de la mémoire
 void libererSnake(Snake* snake);
 
 // Affiche le score, le stocke et retourne au menu
-void mourir();
+void mourir(Game* g);
 
 #endif // CHARACTER_H_INCLUDED

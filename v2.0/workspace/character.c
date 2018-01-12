@@ -26,6 +26,10 @@ void updatePosition(Snake* snake)
         break;
     case 1:
         snake->positionTete.x-=32;
+        if(snake->positionTete.x < 0)
+        {
+            snake->positionTete.x = 0; //Bug du négatif
+        }
         snake->teteAff = snake->imgTete[0];
         snake->queueAff = snake->imgQueue[0];
         break;
@@ -36,13 +40,16 @@ void updatePosition(Snake* snake)
         break;
     case 3:
         snake->positionTete.y-=32;
+        if(snake->positionTete.y < 0)
+        {
+                    snake->positionTete.y = 0;
+        }
         snake->teteAff = snake->imgTete[1];
-        snake->queueAff = snake->imgQueue[1];
+        snake->queueAff = snake->imgQueue[1]; //BUG
         break;
     default:
         break;
     }
-
     snake->positionX = snake->positionTete.x / 32;
     snake->positionY = snake->positionTete.y / 32;
 
@@ -51,9 +58,6 @@ void updatePosition(Snake* snake)
 Snake* loadSnake()
 {
     Snake* s;
-    s->positionTete.x = 64; // Postition x de départ
-    s->positionTete.y = 64; // Position y de départ
-
     s->positionX = s->positionTete.x / 32;
     s->positionY = s->positionTete.y / 32;
 
@@ -80,15 +84,42 @@ Snake* loadSnake()
     return s;
 }
 
-void checkTile(Snake* s, Map* m, SDL_Surface* screen)
+void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
 {
     // Si snake cogne un mur
-    if(m->props[m->schema[s->positionX][s->positionY]].type == PIEGE ||
-       m->props[m->schema[s->positionX][s->positionY]].type == MUR )
+    if( (m->props[m->schema[s->positionX][s->positionY]].type == PIEGE) ||
+        (m->props[m->schema[s->positionX][s->positionY]].type == MUR && m->crossWall == 0) )  //Meurt
     {
-        // Mourir(s, screen);
-        s->positionTete.x = 64;
-        s->positionTete.y = 64;
+            g->sceneEnCours = SCORE; //Menu Score
+    }
+
+    // Si le crosswall est active
+    if(m->props[m->schema[s->positionX][s->positionY]].type == MUR && m->crossWall == 1)
+    {
+        // On le teleporte de l'autre cote en fonction de sa position
+        switch(s->positionTete.x)
+        {
+        case 1280-32:
+            s->positionTete.x = 32;
+            break;
+        case 0:
+            s->positionTete.x = 1280-32;
+            break;
+        default:
+            break;
+        }
+
+        switch(s->positionTete.y)
+        {
+        case 640-32:
+            s->positionTete.y = 32;
+            break;
+        case 0:
+            s->positionTete.y = 640-64;
+            break;
+        default:
+            break;
+        }
     }
 
     int i;
@@ -96,9 +127,7 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen)
     {
         if(s->positionTete.x == s->positionCorps[i].x && s->positionTete.y == s->positionCorps[i].y)
         {
-            //mourir(s, screen);
-            s->positionTete.x = 64;
-            s->positionTete.y = 64;
+             g->sceneEnCours = SCORE; // Meurt, écran des scores
         }
     }
 
@@ -131,20 +160,15 @@ void eatFruit(Snake* snake, Map* m)
     randomFruit(m);
 }
 
-void AfficherSnake(Snake* snake, SDL_Surface* screen)
-{
-    SDL_BlitSurface(snake->teteAff,NULL ,screen, &snake->positionTete);
-
-    int i;
-    for(i = 0; i < snake->lengthQueue; i++)
-    {
-        SDL_BlitSurface(snake->imgCorps, NULL, screen, &snake->positionCorps[i]);
-    }
-
-    SDL_BlitSurface(snake->queueAff, NULL, screen, &snake->positionCorps[snake->lengthQueue]);
-}
-
 void libererSnake(Snake* snake)
 {
-
+    SDL_FreeSurface(snake->imgCorps);
+    for(int i = 0; i < 4; i++)
+    {
+        SDL_FreeSurface(snake->imgQueue[i]);
+        SDL_FreeSurface(snake->imgTete[i]);
+    }
+    SDL_FreeSurface(snake->teteAff);
+    SDL_FreeSurface(snake->queueAff);
+    free(snake);
 }
