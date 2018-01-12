@@ -1,7 +1,7 @@
 Snake est un jeu developpé par Conoracre et Tarkok
 dans le cadre du projet du module B23 à Télécom Lille
 
-v1.0 => sources d'un programme console non aboutit
+v1.0 => sources d'un programme console non abouti
 v2.0 => sources du jeu en version graphique, avec SDL
 (en cours de dev)
 Current => "release" la plus récente du jeu
