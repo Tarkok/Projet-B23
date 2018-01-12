@@ -44,7 +44,7 @@ void randomFruit(Map* m)
 void play(Map* m, Snake* snake, SDL_Surface* screen, Game* g)
 {
 
-            AfficherMap(m,screen);
+            AfficherMap(m,screen, snake);
             AfficherSnake(snake, screen);
 
             updatePosition(snake);

@@ -112,8 +112,23 @@ Map* ChargerMap(const char* level)
 	return m;
 }
 
-int AfficherMap(Map* m,SDL_Surface* screen)
+int AfficherMap(Map* m,SDL_Surface* screen, Snake* s)
 {
+    //Gestion du texte
+    TTF_Init();
+    TTF_Font* police = NULL;
+    SDL_Surface* texte = NULL;
+    SDL_Rect position;
+    SDL_Color couleurNoire = {255, 255, 255};
+    position.x = 32;
+    position.y = 5;
+
+    char affichage[50];
+    sprintf(affichage, "Score  : %d    ¥   Temps : %d", s->lengthQueue);
+
+    police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
+    texte = TTF_RenderText_Blended(police, affichage , couleurNoire);
+
 	int i,j;
 	SDL_Rect Rect_dest;
 	int numero_tile;
@@ -127,6 +142,7 @@ int AfficherMap(Map* m,SDL_Surface* screen)
 			SDL_BlitSurface(m->tileset,&(m->props[numero_tile].R),screen,&Rect_dest);
 		}
 	}
+	SDL_BlitSurface(texte, NULL, screen, &position);
 	return 0;
 }
 
@@ -184,7 +200,7 @@ void afficherScore(Snake* s, SDL_Surface* screen)
     char score[20];
     sprintf(score, "Score : %d", s->lengthQueue);
 
-    police = TTF_OpenFont("media/consolab.ttf", 20);
+    police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
     texte = TTF_RenderText_Blended(police, score , couleurNoire);
 
 
@@ -204,7 +220,7 @@ void afficherMenu(SDL_Surface* screen)
     position.y = 50;
 
 
-    police = TTF_OpenFont("media/consolab.ttf", 20);
+    police = TTF_OpenFont("media/Volter__28Goldfish_29.ttf", 20);
     texte = TTF_RenderText_Blended(police, "Play !"  , couleurNoire);
 
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 17, 206, 112));
