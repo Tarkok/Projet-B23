@@ -54,12 +54,21 @@ void play(Map* m, Snake* snake, SDL_Surface* screen, Game* g)
 
             SDL_Flip(screen);
 
-           // if(m->vitesse == 0)
-            /*{
-            while(!)
-            {
+            SDL_Delay(m->vitesse);
+}
 
-            }}*/
-           // else
-                SDL_Delay(m->vitesse);
+void stockerScore(Snake* snake, int bestScore[3])
+{
+    chargerBestScore(bestScore);
+
+}
+
+void chargerBestScore(int bestScore[3])
+{
+    FILE* fichier = fopen("score.txt", "r");
+    fscanf(fichier, bestScore[0]);
+    fscanf(fichier, bestScore[1]);
+    fscanf(fichier, bestScore[2]);
+
+    fclose(fichier);
 }

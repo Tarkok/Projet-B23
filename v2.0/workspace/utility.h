@@ -18,6 +18,8 @@ clock_t beginTime;
 clock_t gameTime;
 
 void play(Map* m, Snake* snake, SDL_Surface* s, Game* g);
+void stockerScore(Snake* snake,int bestScore[3]);
+void chargerBestScore(int bestScore[3]);
 
 int stop; // for the update function
 
