@@ -2,6 +2,7 @@
 #define UTILITY_H_INCLUDED
 
 #include <stdio.h>
+#include <conio.h>
 
 #include "character.h"
 #include "render.h"

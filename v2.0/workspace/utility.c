@@ -53,5 +53,12 @@ void play(Map* m, Snake* snake, SDL_Surface* screen, Game* g)
 
             SDL_Flip(screen);
 
-            SDL_Delay(m->vitesse);
+           // if(m->vitesse == 0)
+            /*{
+            while(!)
+            {
+
+            }}*/
+           // else
+                SDL_Delay(m->vitesse);
 }

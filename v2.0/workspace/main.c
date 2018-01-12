@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <SDL_ttf.h>
 
 #include "character.h"
 #include "utility.h"
@@ -17,6 +18,9 @@ int main ( int argc, char** argv )
         printf( "Unable to init SDL: %s\n", SDL_GetError() );
         return 1;
     }
+    TTF_Init();
+
+
     // create a new window
     SDL_Surface* screen = SDL_SetVideoMode(1280, 640, 16,
                                            SDL_HWSURFACE|SDL_DOUBLEBUF); //Pour tile 32 px 40 * 20
@@ -31,8 +35,6 @@ int main ( int argc, char** argv )
 
     //Creer le jeu et les etats de jeu
     Game* jeu;
-
-
 
     jeu->sceneEnCours = MENU;
 
@@ -106,8 +108,10 @@ int main ( int argc, char** argv )
     } // end main loop
 
     LibererMap(m);
+    libererSnake(snake);
 
     // all is well ;)
+    TTF_Quit();
     SDL_Quit();
     printf("Exited cleanly\n");
     return 0;
