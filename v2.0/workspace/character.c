@@ -45,7 +45,7 @@ void updatePosition(Snake* snake)
                     snake->positionTete.y = 0;
         }
         snake->teteAff = snake->imgTete[1];
-        snake->queueAff = snake->imgQueue[1]; //BUG
+        snake->queueAff = snake->imgQueue[1];
         break;
     default:
         break;
@@ -122,7 +122,8 @@ void checkTile(Snake* s, Map* m, SDL_Surface* screen, Game* g)
         }
     }
 
-    int i;
+    //On se mange sa propre queue
+   int i;
     for(i = 0; i < s->lengthQueue; i++)
     {
         if(s->positionTete.x == s->positionCorps[i].x && s->positionTete.y == s->positionCorps[i].y)
