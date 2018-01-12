@@ -237,7 +237,7 @@ afficherLevelSelector(SDL_Surface* screen)
 afficherRegle(SDL_Surface* screen)
 {
     SDL_Surface* Fond;
-    Fond = LoadImage32("media/assets/menulevel.bmp");
+    Fond = LoadImage32("media/assets/rules.bmp");
     SDL_Rect position;
     position.x = 0;
     position.y = 0;
